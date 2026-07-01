@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weebji Studios · Elite Creative Agency</title>
+    
+    <!-- Apple Style Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #000000;
+            --surface: rgba(28, 28, 30, 0.65);
+            --surface-hover: rgba(44, 44, 46, 0.8);
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --accent: #2997ff;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --success: #34c759;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            overscroll-behavior: none;
+        }
+
+        /* Lenis Smooth Scroll Setup */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        /* WebGL Background Canvas - The "Video" Layer */
+        #gl-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100svh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Layout Basics */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 16px 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-nav {
+            background: var(--text-main);
+            color: var(--bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-nav:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Hero Sequence (Pinned) */
+        .hero-sequence {
+            height: 400vh;
+            position: relative;
+        }
+
+        .hero-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 12vw, 180px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            text-align: center;
+            position: absolute;
+            z-index: 2;
+            will-change: transform, opacity, filter;
+        }
+
+        .hero-text-gradient {
+            background: linear-gradient(180deg, #ffffff 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 4vw, 36px);
+            font-weight: 500;
+            color: var(--text-muted);
+            text-align: center;
+            position: absolute;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(50px);
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--surface);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 48px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s;
+        }
+
+        /* About Parallax Section */
+        .about-section {
+            padding: 160px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: clamp(18px, 2vw, 24px);
+            line-height: 1.6;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .about-text strong {
+            color: var(--text-main);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .stat-num {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            letter-spacing: -2px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Highly Optimized Pricing Section */
+        .pricing-section {
+            padding: 160px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-heading {
+            font-size: clamp(40px, 6vw, 56px);
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #ffffff 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: clamp(16px, 2vw, 20px);
+            margin-bottom: 80px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .price-card {
+            background: var(--surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            border-color: rgba(255,255,255,0.3);
+            background: var(--surface-hover);
+            transform: translateY(-4px);
+        }
+
+        .pc-number {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .pc-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .pc-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .price-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 16px;
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .pi-name {
+            font-size: 15px;
+            color: #d2d2d7;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .pi-sub {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 4px;
+        }
+
+        .pi-val {
+            font-size: 16px;
+            color: var(--text-main);
+            font-weight: 700;
+            text-align: right;
+            white-space: nowrap;
+            margin-left: 16px;
+        }
+
+        /* High-Converting Bundle Box */
+        .bundle-box {
+            background: linear-gradient(135deg, rgba(41, 151, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(41, 151, 255, 0.4);
+            border-radius: 32px;
+            padding: 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(24px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bundle-box::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: radial-gradient(circle at top right, rgba(41, 151, 255, 0.1), transparent 50%);
+            pointer-events: none;
+        }
+
+        .bundle-left h3 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+
+        .bundle-left p {
+            font-size: 16px;
+            color: #d2d2d7;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+        .bundle-right {
+            text-align: right;
+            position: relative;
+            z-index: 2;
+        }
+
+        .strike-price {
+            font-size: 20px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .bundle-right .price {
+            font-size: clamp(48px, 8vw, 72px);
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #2997ff, #34c759);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bundle-badge {
+            display: inline-block;
+            background: rgba(41, 151, 255, 0.2);
+            color: #2997ff;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        /* Work Sticky Stack */
+        .work-section {
+            padding: 120px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card-stack {
+            position: relative;
+            margin-bottom: 100px;
+        }
+
+        .work-card-wrapper {
+            position: sticky;
+            top: 120px;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .work-card {
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 17, 19, 0.85);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 60px;
+            will-change: transform;
+            transform-origin: top center;
+        }
+
+        .wc-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            transition: opacity 0.5s, transform 0.8s;
+            z-index: 0;
+        }
+
+        .work-card:hover .wc-bg {
+            opacity: 0.5;
+            transform: scale(1.05);
+        }
+
+        .wc-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .wc-category {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(52, 199, 89, 0.5);
+        }
+
+        .wc-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .wc-desc {
+            font-size: 18px;
+            color: #d2d2d7;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            background: var(--text-main);
+            color: var(--bg);
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background: #ffffff;
+        }
+
+        /* Contact Section */
+        footer {
+            background: #000000;
+            padding: 160px 0 60px;
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid var(--glass-border);
+            overflow: hidden;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            margin-bottom: 120px;
+            align-items: start;
+        }
+
+        .contact-info-block h2 {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #ffffff 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .contact-info-block p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        .contact-links-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 32px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-pill:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(8px);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        /* Glassmorphic Contact Form */
+        .contact-form-wrapper {
+            background: var(--surface);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 48px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 16px 20px;
+            color: var(--text-main);
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--accent);
+            background: rgba(0,0,0,0.5);
+            box-shadow: 0 0 0 4px rgba(41, 151, 255, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--text-main);
+            color: var(--bg);
+            border: none;
+            border-radius: 20px;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 16px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 32px;
+        }
+
+        /* Responsive Master Rules */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .nav-inner { padding: 0 20px; }
+            
+            .about-section, .pricing-section, .work-section { padding: 80px 0; }
+            footer { padding: 80px 0 40px; }
+            
+            .hero-sequence { height: 300vh; }
+            
+            .about-grid, .pricing-grid, .contact-grid { 
+                grid-template-columns: 1fr; 
+                gap: 32px; 
+            }
+            
+            .glass-card { padding: 32px; }
+            .price-card { padding: 32px; }
+            .contact-form-wrapper { padding: 32px; }
+            
+            .bundle-box { 
+                flex-direction: column; 
+                align-items: flex-start; 
+                gap: 32px; 
+                padding: 32px;
+            }
+            .bundle-right { text-align: left; }
+            
+            .work-card-wrapper { 
+                height: auto; 
+                position: relative; 
+                top: 0; 
+                margin-bottom: 24px;
+            }
+            .work-card { 
+                padding: 32px; 
+                height: 480px; 
+                border-radius: 28px;
+            }
+            
+            .footer-bottom { 
+                flex-direction: column; 
+                gap: 16px; 
+                text-align: center; 
+            }
+            
+            .contact-pill { padding: 16px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WebGL Canvas for Immersive Scrubbing Animation -->
+    <canvas id="gl-canvas"></canvas>
+
+    <nav>
+            <div class="nav-inner">
+            <div class="nav-logo">Weebji Studios</div>
+            <a href="#contact" class="btn-nav">Book a Build</a>
+        </div>
+    </nav>
+
+    <!-- Pinned Scroll Sequence (Mimicking Video Playback) -->
+    <section class="hero-sequence">
+        <div class="hero-sticky">
+            <h1 class="hero-title hero-text-gradient" id="hero-1">Weebji</h1>
+            <h1 class="hero-title hero-text-gradient" id="hero-2" style="opacity: 0; transform: translateY(100px) scale(0.8);">Elite</h1>
+            <h1 class="hero-title hero-text-gradient" id="hero-3" style="opacity: 0; transform: translateY(100px) scale(0.8);">Studios.</h1>
+            <p class="hero-subtitle" id="hero-sub">Elite creative & growth studio engineering aesthetic, conversion-obsessed brands.</p>
+        </div>
+    </section>
+
+    <!-- Parallax Glassmorphism Content -->
+    <section class="about-section container" id="about">
+        <div class="about-grid">
+            <div class="about-left" data-speed="1.1">
+                <p class="about-text">
+                    Weebji Studios is an elite creative & growth studio. We design and deploy websites, content, and brands — <strong>fast, clean, and with zero excuses.</strong><br><br>
+                    We partner with IT companies, retail brands, and independent creators, delivering production-ready systems in <strong>48 hours.</strong> Our in‑house channel Weebji has crossed 110K+ verified views, built entirely from scratch.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-num">110K+</div>
+                        <div class="stat-label">Verified In‑House Views</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">48H</div>
+                        <div class="stat-label">Standard Turnaround</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-right" data-speed="0.9">
+                    <div class="glass-card">
+                    <h3 style="font-size: 24px; margin-bottom: 32px; font-weight: 700;">Studio Identity</h3>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;">
+                        <span style="color: var(--text-muted);">Availability</span>
+                        <strong style="font-weight: 600;">Remote-first</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;">
+                        <span style="color: var(--text-muted);">Engagement</span>
+                        <strong style="color: var(--success); display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                            <span class="live-dot"></span> Accepting Select Launches
+                        </strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;">
+                        <span style="color: var(--text-muted);">Operating Languages</span>
+                        <strong style="font-weight: 600;">English, Hindi</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-muted);">Studio Hotline</span>
+                        <strong style="font-weight: 600;">WhatsApp · +91 6239 365 079</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apple-Style Sticky Card Stack -->
+    <section class="work-section container" id="work">
+        <h2 class="section-heading">Selected Work.</h2>
+        <p class="section-sub" style="margin-bottom: 60px;">Scroll to explore a few of the things I've built.</p>
+        
+        <div class="card-stack">
+            <!-- Card 1: WEEBJI OS -->
+            <div class="work-card-wrapper">
+                <div class="work-card">
+                    <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(0, 245, 255, 0.4), transparent 60%);"></div>
+                    <div class="wc-content">
+                        <div class="wc-category"><div class="live-dot"></div> Full Product · App Development</div>
+                        <h3 class="wc-title">WEEBJI OS</h3>
+                        <p class="wc-desc">A live self-improvement RPG app, built and shipped solo end-to-end — payment integration, subscription funnel, retention systems, and a full anime-inspired product experience, live on the Play Store.</p>
+                        <a href="https://play.google.com/store/apps/details?id=io.github.skryrsh.twa" target="_blank" rel="noopener noreferrer" class="btn-primary">Get it on Play Store</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Aldurrat -->
+            <div class="work-card-wrapper">
+                <div class="work-card">
+                    <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(41, 151, 255, 0.4), transparent 60%);"></div>
+                    <div class="wc-content">
+                        <div class="wc-category">Web Development · Brand Identity</div>
+                        <h3 class="wc-title">Aldurrat IT Solutions</h3>
+                        <p class="wc-desc">A potential website concept designed for a friend's IT & AI company in Oman — custom identity, animated UI, and a fully wired lead capture flow. Deal was never finalized.</p>
+                        <a href="aldurrat-showcase.html" target="_blank" rel="noopener noreferrer" class="btn-primary">View Concept</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Weebji -->
+            <div class="work-card-wrapper">
+                <div class="work-card">
+                    <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(255, 69, 58, 0.3), transparent 60%);"></div>
+                    <div class="wc-content">
+                        <div class="wc-category"><div class="live-dot"></div> YouTube · Content Creation</div>
+                        <h3 class="wc-title">Weebji Channel</h3>
+                        <p class="wc-desc">Anime & gaming self-improvement. 110K+ verified views. Strategy, scripting, editing, and thumbnails handled entirely in‑studio.</p>
+                        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                            <a href="https://youtube.com/@weebji" target="_blank" rel="noopener noreferrer" class="btn-primary">Watch Videos</a>
+                            <a href="https://instagram.com/skischill" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background:transparent; border:1px solid rgba(255,255,255,0.25); color:var(--text-main);">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Ronin Protocol -->
+            <div class="work-card-wrapper">
+                <div class="work-card">
+                    <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(255, 214, 10, 0.3), transparent 60%);"></div>
+                    <div class="wc-content">
+                        <div class="wc-category">Digital Product</div>
+                        <h3 class="wc-title">Ronin Protocol</h3>
+                        <p class="wc-desc">Notion-based productivity & discipline system built on samurai principles. Zero fluff, only execution.</p>
+                        <a href="https://topmate.io/weebji" target="_blank" rel="noopener noreferrer" class="btn-primary">Get the Template</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Footer with Web3Forms AJAX Setup -->
+    <footer id="contact">
+        <div class="container">
+            
+            <div class="contact-grid">
+                <!-- Left Column: Big Text & Direct Links -->
+                <div class="contact-info-block">
+                    <h2>Let’s build<br>your next<br>unfair edge.</h2>
+                    <p>Whether you need a flagship site, a content engine, or a complete launch system—send the signal. I reply within 24 hours.</p>
+                    
+                    <div class="contact-links-stack">
+                        <a href="https://wa.me/916239365079" target="_blank" rel="noopener noreferrer" class="contact-pill">
+                            <span>WhatsApp</span>
+                            <span style="color: var(--text-muted); font-size: 14px;">+91 6239 365 079 →</span>
+                        </a>
+                        <a href="https://youtube.com/@weebji" target="_blank" rel="noopener noreferrer" class="contact-pill">
+                            <span>YouTube</span>
+                            <span style="color: var(--text-muted); font-size: 14px;">@weebji →</span>
+                        </a>
+                        <a href="https://topmate.io/weebji" target="_blank" rel="noopener noreferrer" class="contact-pill">
+                            <span>Digital Store</span>
+                            <span style="color: var(--text-muted); font-size: 14px;">topmate.io/weebji →</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Seamless Web3Forms AJAX Form -->
+                <div class="contact-form-wrapper">
+                    <form id="contact-form">
+                        
+                        <!-- EXACT WEB3FORMS KEY INJECTED HERE -->
+                        <input type="hidden" name="access_key" value="c5168abb-f752-495b-b5fe-62c5062699bf">
+                        
+                        <!-- Configuration Hidden Inputs -->
+                        <input type="hidden" name="subject" value="New Project Inquiry - Weebji Studios">
+                        <input type="hidden" name="from_name" value="Weebji Studios">
+                        <input type="checkbox" name="botcheck" style="display: none;">
+
+                        <div class="form-group">
+                            <label class="form-label" for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="service">Interested In</label>
+                            <select id="service" name="service" class="form-input" style="appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2386868b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 20px top 50%; background-size: 12px auto;">
+                                <option value="Web Development">Web Development</option>
+                                <option value="App Development">App Development</option>
+                                <option value="Video Content">Video & Content</option>
+                                <option value="Social Media">Social Media Management</option>
+                                <option value="Other">Other / Custom Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="message">Project Details</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your brand, timelines, and what a ‘win’ looks like for you..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" id="submit-btn" class="form-submit">Send Message →</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <span>"Step by step, we walk a thousand miles." — Adapted from Miyamoto Musashi</span>
+                <span>© 2026 Weebji Studios</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CDN Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Initialize Smooth Scroll (Lenis)
+        const isMobile = window.innerWidth <= 768;
+        
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            touchMultiplier: 2,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+
+        // 2. The Apple-Style Parallax Hero Animation (Text Scrubbing)
+        const heroTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".hero-sequence",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1.5 // Fluid scrubbing
+            }
+        });
+
+        heroTimeline
+            .to("#hero-1", { y: -100, opacity: 0, scale: 0.9, filter: "blur(10px)", duration: 1 })
+            .to("#hero-2", { y: 0, opacity: 1, scale: 1, filter: "blur(0px)", duration: 1 }, "-=0.5")
+            .to("#hero-2", { y: -100, opacity: 0, scale: 0.9, filter: "blur(10px)", duration: 1 })
+            .to("#hero-3", { y: 0, opacity: 1, scale: 1, filter: "blur(0px)", duration: 1 }, "-=0.5")
+            .to("#hero-3", { y: -100, opacity: 0, scale: 0.9, filter: "blur(10px)", duration: 1 })
+            .to("#hero-sub", { y: 0, opacity: 1, duration: 1 }, "-=0.5");
+
+        // 3. Apple-Style Sticky Card Stack (Work Section) - Desktop Only for best UX
+        if (!isMobile) {
+            const cards = gsap.utils.toArray('.work-card');
+            cards.forEach((card, i) => {
+                ScrollTrigger.create({
+                    trigger: card.parentElement,
+                    start: "top 120px",
+                    pin: true,
+                    pinSpacing: false,
+                    endTrigger: ".card-stack",
+                    end: "bottom bottom",
+                    animation: gsap.to(card, {
+                        scale: 0.92,
+                        opacity: 0.4,
+                        filter: "blur(4px)",
+                        ease: "none"
+                    }),
+                    scrub: true
+                });
+            });
+        }
+
+        // 4. Parallax Data Attributes (For the About section text)
+        if (!isMobile) {
+            gsap.utils.toArray('[data-speed]').forEach(el => {
+                gsap.to(el, {
+                    y: () => (1 - parseFloat(el.getAttribute('data-speed'))) * (ScrollTrigger.maxScroll(window) / 3),
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            });
+        }
+
+        // 5. The "Video Animation" layer using WebGL (Three.js)
+        const canvas = document.getElementById('gl-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        
+        // Lower pixel ratio on mobile for performance
+        renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Abstract shape
+        const geometry = new THREE.TorusKnotGeometry(2, 0.6, isMobile ? 128 : 256, isMobile ? 32 : 64);
+        
+        const material = new THREE.MeshPhysicalMaterial({
+            color: 0x000000,
+            metalness: 0.9,
+            roughness: 0.2,
+            clearcoat: 1.0,
+            clearcoatRoughness: 0.1,
+            wireframe: true,
+            transparent: true,
+            opacity: isMobile ? 0.08 : 0.12 // Softer on mobile
+        });
+
+        const shape = new THREE.Mesh(geometry, material);
+        scene.add(shape);
+
+        // Lights
+        const light1 = new THREE.PointLight(0xffffff, 3, 50); 
+        light1.position.set(5, 5, 5);
+        scene.add(light1);
+
+        const light2 = new THREE.PointLight(0x2997ff, 5, 50);
+        light2.position.set(-5, -5, -5);
+        scene.add(light2);
+        
+        const light3 = new THREE.PointLight(0x34c759, 3, 50);
+        light3.position.set(0, 5, -5);
+        scene.add(light3);
+
+        camera.position.z = 7;
+
+        // Tie rotation to scroll
+        ScrollTrigger.create({
+            trigger: "body",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1, 
+            onUpdate: (self) => {
+                const p = self.progress;
+                shape.rotation.y = p * Math.PI * 4;
+                shape.rotation.x = p * Math.PI * 2;
+                shape.rotation.z = p * Math.PI;
+                
+                const scale = 1 + (p * 0.8);
+                shape.scale.set(scale, scale, scale);
+
+                light1.position.x = 5 - (p * 10);
+                light2.position.y = -5 + (p * 15);
+                light3.position.z = -5 + (p * 10);
+            }
+        });
+
+        const clock = new THREE.Clock();
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = clock.getElapsedTime();
+            shape.position.y = Math.sin(time * 0.5) * 0.2;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // =========================================================
+        // 6. Seamless Web3Forms AJAX Submission
+        // =========================================================
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            submitBtn.innerText = 'Sending...';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.pointerEvents = 'none';
+            
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let result = await response.json();
+                if (response.status == 200) {
+                    submitBtn.innerText = 'Message Sent! ✓';
+                    submitBtn.style.background = 'var(--success)';
+                    submitBtn.style.color = '#fff';
+                    submitBtn.style.opacity = '1';
+                    form.reset();
+                    
+                    setTimeout(() => {
+                        submitBtn.innerText = 'Send Message →';
+                        submitBtn.style.background = 'var(--text-main)';
+                        submitBtn.style.color = 'var(--bg)';
+                        submitBtn.style.pointerEvents = 'auto';
+                    }, 5000);
+                } else {
+                    console.log(response);
+                    submitBtn.innerText = 'Error! Try again.';
+                    submitBtn.style.opacity = '1';
+                    submitBtn.style.pointerEvents = 'auto';
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                submitBtn.innerText = 'Error! Try again.';
+                submitBtn.style.opacity = '1';
+                submitBtn.style.pointerEvents = 'auto';
+            });
+        });
+
+    </script>
+</body>
+</html>
