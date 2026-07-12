@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weebji Studios · Elite Creative Agency</title>
-    
+    <meta name="description" content="Weebji Studios — QR menu ordering systems for restaurants & cafés in Oman, plus websites, apps and content. Live demo, 48-hour turnaround.">
+    <meta property="og:title" content="Weebji Studios · Restaurant QR Systems, Websites & Apps">
+    <meta property="og:description" content="Customers order from their phones. You watch every order and every rial live — from anywhere. Try the live demo.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://skryrsh.github.io/portfolio/">
+
     <!-- Apple Style Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -683,10 +688,327 @@
             padding-top: 32px;
         }
 
+        /* ===== Restaurant QR System Section ===== */
+        .resto-section {
+            padding: 160px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .resto-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(52, 199, 89, 0.12);
+            border: 1px solid rgba(52, 199, 89, 0.35);
+            color: var(--success);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .resto-head-wrap { text-align: center; }
+
+        .resto-grid {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 40px;
+            align-items: stretch;
+            margin: 64px 0 40px;
+        }
+
+        /* Phone mockup — customer menu */
+        .phone-mock {
+            width: 100%;
+            max-width: 340px;
+            margin: 0 auto;
+            background: #0a0a0c;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+        }
+
+        .phone-screen {
+            background: #101014;
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 480px;
+        }
+
+        .pm-header {
+            padding: 18px 18px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .pm-lang {
+            float: right;
+            font-size: 11px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 3px 10px;
+            color: var(--text-muted);
+        }
+
+        .pm-cafe { font-weight: 700; font-size: 16px; }
+
+        .pm-table {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .pm-items {
+            flex: 1;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pm-item {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pm-item-name { font-size: 13px; font-weight: 600; }
+
+        .pm-item-ar {
+            display: block;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .pm-item-right { display: flex; align-items: center; gap: 10px; }
+
+        .pm-price { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+
+        .pm-add {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .pm-total {
+            background: var(--accent);
+            margin: 0 14px 14px;
+            border-radius: 16px;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        /* Dashboard mockup — owner side */
+        .dash-mock {
+            background: rgba(17, 17, 19, 0.85);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 28px;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dm-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 16px;
+        }
+
+        .dm-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding-top: 8px;
+        }
+
+        .dm-revenue { text-align: right; }
+
+        .dm-rev-num {
+            font-size: clamp(30px, 3.5vw, 44px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--success);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .dm-rev-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dm-orders {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .dm-order {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: orderIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes orderIn {
+            from { opacity: 0; transform: translateY(-14px) scale(0.97); }
+            to { opacity: 1; transform: none; }
+        }
+
+        .dm-o-table { font-size: 13px; font-weight: 700; }
+
+        .dm-o-items { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+        .dm-status {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            padding: 5px 12px;
+            border-radius: 12px;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .st-new { background: rgba(41, 151, 255, 0.15); color: var(--accent); }
+        .st-prep { background: rgba(255, 159, 10, 0.15); color: #ff9f0a; }
+        .st-ready { background: rgba(52, 199, 89, 0.15); color: var(--success); }
+
+        .resto-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .rf-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px 24px;
+        }
+
+        .rf-icon { color: var(--success); font-weight: 700; flex-shrink: 0; }
+
+        .rf-text { font-size: 14px; color: #d2d2d7; line-height: 1.55; }
+
+        .rf-text strong { color: var(--text-main); }
+
+        .resto-pricing {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .rp-chip {
+            text-align: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px 16px;
+            position: relative;
+        }
+
+        .rp-chip.featured {
+            border-color: rgba(52, 199, 89, 0.4);
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.08), transparent);
+        }
+
+        .rp-tag {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: #000;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .rp-name {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .rp-price { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+
+        .rp-per { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+        .resto-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .resto-proof {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 28px;
+        }
+
+        .resto-proof a { color: var(--text-main); }
+
         /* Responsive Master Rules */
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
-            .nav-inner { padding: 0 20px; }
+            .nav-inner { padding: 0 16px; }
+            .nav-logo { font-size: 15px; }
+            .btn-nav { padding: 7px 12px; font-size: 12px; white-space: nowrap; }
             
             .about-section, .pricing-section, .work-section { padding: 80px 0; }
             footer { padding: 80px 0 40px; }
@@ -729,6 +1051,19 @@
             }
             
             .contact-pill { padding: 16px 24px; }
+
+            .resto-section { padding: 80px 0; }
+            .resto-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin: 48px 0 24px;
+            }
+            .phone-screen { min-height: 420px; }
+            .dash-mock { padding: 20px; }
+            .dm-orders { min-height: 240px; }
+            .resto-features { grid-template-columns: 1fr; margin-bottom: 32px; }
+            .resto-pricing { grid-template-columns: 1fr; margin-bottom: 32px; }
+            .rp-chip { padding: 20px 16px; }
         }
     </style>
 </head>
@@ -740,7 +1075,10 @@
     <nav>
             <div class="nav-inner">
             <div class="nav-logo">Weebji Studios</div>
-            <a href="#contact" class="btn-nav">Book a Build</a>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <a href="#restaurants" class="btn-nav" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">For Restaurants</a>
+                <a href="#contact" class="btn-nav">Book a Build</a>
+            </div>
         </div>
     </nav>
 
@@ -798,6 +1136,93 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Restaurant QR Ordering System (Flagship Offer) -->
+    <section class="resto-section container" id="restaurants">
+        <div class="resto-head-wrap">
+            <div class="resto-badge"><span class="live-dot"></span> For Restaurants &amp; Cafés · Oman</div>
+            <h2 class="section-heading">Your menu on their phones.<br>Your money on yours.</h2>
+            <p class="section-sub" style="margin-bottom: 0;">A complete QR ordering system, live in production. Customers scan the table QR, order and track their food — you watch every order and every rial in real time, from anywhere. No app downloads. English &amp; Arabic.</p>
+        </div>
+
+        <div class="resto-grid">
+            <!-- Customer phone -->
+            <div class="phone-mock">
+                <div class="phone-screen">
+                    <div class="pm-header">
+                        <span class="pm-lang">EN | عربي</span>
+                        <div class="pm-cafe">Al Dana Café</div>
+                        <div class="pm-table">Table 4 · Scan &amp; Order</div>
+                    </div>
+                    <div class="pm-items">
+                        <div class="pm-item">
+                            <div><span class="pm-item-name">Cappuccino</span><span class="pm-item-ar">كابتشينو</span></div>
+                            <div class="pm-item-right"><span class="pm-price">1.500</span><span class="pm-add">+</span></div>
+                        </div>
+                        <div class="pm-item">
+                            <div><span class="pm-item-name">Karak Chai</span><span class="pm-item-ar">شاي كرك</span></div>
+                            <div class="pm-item-right"><span class="pm-price">0.600</span><span class="pm-add">+</span></div>
+                        </div>
+                        <div class="pm-item">
+                            <div><span class="pm-item-name">Club Sandwich</span><span class="pm-item-ar">كلوب ساندويتش</span></div>
+                            <div class="pm-item-right"><span class="pm-price">2.200</span><span class="pm-add">+</span></div>
+                        </div>
+                        <div class="pm-item">
+                            <div><span class="pm-item-name">Kunafa</span><span class="pm-item-ar">كنافة</span></div>
+                            <div class="pm-item-right"><span class="pm-price">1.800</span><span class="pm-add">+</span></div>
+                        </div>
+                    </div>
+                    <div class="pm-total"><span>Your Order · 3 items</span><span>4.300 OMR</span></div>
+                </div>
+            </div>
+
+            <!-- Owner dashboard -->
+            <div class="dash-mock">
+                <div class="dm-top">
+                    <div class="dm-title"><span class="live-dot"></span> Owner Dashboard</div>
+                    <div class="dm-revenue">
+                        <div class="dm-rev-num" id="dm-rev">38.700</div>
+                        <div class="dm-rev-label">Today's Revenue · OMR</div>
+                    </div>
+                </div>
+                <div class="dm-orders" id="dm-orders"></div>
+            </div>
+        </div>
+
+        <div class="resto-features">
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>No app. No waiting for a waiter.</strong> Customers scan the table QR and order in English or العربية, with a live running total.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Orders pop in the moment they're placed.</strong> One tap moves them New → Preparing → Ready → Delivered.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>See your money from anywhere.</strong> Today's revenue and best-sellers, live on your phone — even from home.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>10 PM daily summary</strong> pushed straight to the owner's phone. Plus clean day &amp; month PDF reports for accounting.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Walk-in &amp; counter orders too</strong> — staff add them in one tap, so the numbers are always complete.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Printed table QR stands included.</strong> We set up everything; you change menu items and prices anytime.</span></div>
+        </div>
+
+        <div class="resto-pricing">
+            <div class="rp-chip">
+                <div class="rp-name">Go</div>
+                <div class="rp-price">45 OMR</div>
+                <div class="rp-per">setup + 8 OMR / month</div>
+            </div>
+            <div class="rp-chip featured">
+                <div class="rp-tag">Most Popular</div>
+                <div class="rp-name">Pro</div>
+                <div class="rp-price">90 OMR</div>
+                <div class="rp-per">setup + 15 OMR / month</div>
+            </div>
+            <div class="rp-chip">
+                <div class="rp-name">Complete</div>
+                <div class="rp-price">150 OMR</div>
+                <div class="rp-per">setup + 20 OMR / month</div>
+            </div>
+        </div>
+
+        <div class="resto-ctas">
+            <a href="https://skryrsh.github.io/weebji-studio/" target="_blank" rel="noopener noreferrer" class="btn-primary">Try the Live Demo →</a>
+            <a href="https://wa.me/916239365079?text=Hi%20Weebji%20Studios%2C%20I%20saw%20the%20QR%20menu%20system%20and%20I%27m%20interested%20for%20my%20restaurant." target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.25); color: var(--text-main);">WhatsApp the Studio</a>
+        </div>
+        <p class="resto-proof">Built by the studio behind <a href="https://play.google.com/store/apps/details?id=io.github.skryrsh.twa" target="_blank" rel="noopener noreferrer">WEEBJI OS</a> — a live product on the Google Play Store.</p>
     </section>
 
     <!-- Apple-Style Sticky Card Stack -->
@@ -914,6 +1339,7 @@
                         <div class="form-group">
                             <label class="form-label" for="service">Interested In</label>
                             <select id="service" name="service" class="form-input" style="appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2386868b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 20px top 50%; background-size: 12px auto;">
+                                <option value="Restaurant QR Menu">Restaurant QR Menu System</option>
                                 <option value="Web Development">Web Development</option>
                                 <option value="App Development">App Development</option>
                                 <option value="Video Content">Video & Content</option>
@@ -1095,6 +1521,55 @@
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
+
+        // =========================================================
+        // 5b. Restaurant Dashboard — live order simulation
+        // =========================================================
+        (function () {
+            const ordersEl = document.getElementById('dm-orders');
+            const revEl = document.getElementById('dm-rev');
+            if (!ordersEl || !revEl) return;
+
+            const SAMPLES = [
+                ['Table 4', '2× Cappuccino · 1× Kunafa', 4.800],
+                ['Table 1', '3× Karak Chai', 1.800],
+                ['Counter', '1× Club Sandwich · 1× Juice', 3.400],
+                ['Table 7', '2× Shawarma · 2× Karak', 3.600],
+                ['Table 2', '1× Kunafa · 2× Turkish Coffee', 4.200],
+                ['Table 5', '2× Avocado Toast · 2× Latte', 6.400]
+            ];
+            const STATUSES = [['NEW', 'st-new'], ['PREPARING', 'st-prep'], ['READY', 'st-ready']];
+            let revenue = 86.400, i = 0;
+
+            function addOrder() {
+                const s = SAMPLES[i % SAMPLES.length]; i++;
+                const el = document.createElement('div');
+                el.className = 'dm-order';
+                el.dataset.stage = '0';
+                el.innerHTML = '<div><div class="dm-o-table">' + s[0] + '</div><div class="dm-o-items">' + s[1] + '</div></div><span class="dm-status st-new">NEW</span>';
+                ordersEl.prepend(el);
+                while (ordersEl.children.length > 4) ordersEl.lastElementChild.remove();
+                revenue += s[2];
+                revEl.textContent = revenue.toFixed(3);
+            }
+
+            function tickStatuses() {
+                Array.from(ordersEl.children).forEach(el => {
+                    let st = +el.dataset.stage;
+                    if (st < 2 && Math.random() > 0.45) {
+                        st++;
+                        el.dataset.stage = String(st);
+                        const pill = el.querySelector('.dm-status');
+                        pill.textContent = STATUSES[st][0];
+                        pill.className = 'dm-status ' + STATUSES[st][1];
+                    }
+                });
+            }
+
+            addOrder(); addOrder();
+            setInterval(addOrder, 9000);
+            setInterval(tickStatuses, 2600);
+        })();
 
         // =========================================================
         // 6. Seamless Web3Forms AJAX Submission
