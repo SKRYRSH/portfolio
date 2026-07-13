@@ -1399,7 +1399,7 @@
 
         <div class="resto-ctas">
             <a href="https://skryrsh.github.io/weebji-studio/" target="_blank" rel="noopener noreferrer" class="btn-primary">Try the Live Demo →</a>
-            <a href="https://wa.me/96894481205?text=Hi%20Weebji%20Studios%2C%20I%20saw%20the%20QR%20menu%20system%20and%20I%27m%20interested%20for%20my%20restaurant." target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.25); color: var(--text-main);">WhatsApp the Studio</a>
+            <a href="#contact" data-service="Restaurant QR Menu" class="btn-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.25); color: var(--text-main);">Get a QR Menu Quote →</a>
         </div>
         <p class="resto-proof">Packages tailored to your restaurant — three tiers, no long contracts. Message us for this month's offer.<br>Built by the studio behind <a href="https://play.google.com/store/apps/details?id=io.github.skryrsh.twa" target="_blank" rel="noopener noreferrer">WEEBJI OS</a> — a live product on the Google Play Store.</p>
     </section>
@@ -1462,7 +1462,7 @@
         </div>
 
         <div class="resto-ctas">
-            <a href="https://wa.me/96894481205?text=Hi%20Weebji%20Studios%2C%20I%20need%20a%20website%20for%20my%20business." target="_blank" rel="noopener noreferrer" class="btn-primary">Start Your Website →</a>
+            <a href="#contact" data-service="Web Development" class="btn-primary">Start Your Website →</a>
         </div>
     </section>
 
@@ -1521,7 +1521,7 @@
         </div>
 
         <div class="resto-ctas">
-            <a href="https://wa.me/96894481205?text=Hi%20Weebji%20Studios%2C%20I%20want%20to%20build%20an%20app." target="_blank" rel="noopener noreferrer" class="btn-primary">Build Your App →</a>
+            <a href="#contact" data-service="App Development" class="btn-primary">Build Your App →</a>
         </div>
     </section>
 
@@ -1569,7 +1569,7 @@
         </div>
 
         <div class="resto-ctas">
-            <a href="https://wa.me/96894481205?text=Hi%20Weebji%20Studios%2C%20I%27m%20interested%20in%20content%20and%20social%20media%20management." target="_blank" rel="noopener noreferrer" class="btn-primary">Grow Your Brand →</a>
+            <a href="#contact" data-service="Social Media" class="btn-primary">Grow Your Brand →</a>
         </div>
     </section>
 
@@ -1603,13 +1603,8 @@
                 <div class="contact-form-wrapper">
                     <form id="contact-form">
                         
-                        <!-- EXACT WEB3FORMS KEY INJECTED HERE -->
-                        <input type="hidden" name="access_key" value="c5168abb-f752-495b-b5fe-62c5062699bf">
-                        
-                        <!-- Configuration Hidden Inputs -->
-                        <input type="hidden" name="subject" value="New Project Inquiry - Weebji Studios">
-                        <input type="hidden" name="from_name" value="Weebji Studios">
-                        <input type="checkbox" name="botcheck" style="display: none;">
+                        <!-- Honeypot: bots fill this, humans never see it -->
+                        <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
 
                         <div class="form-group">
                             <label class="form-label" for="name">Your Name</label>
@@ -1975,39 +1970,40 @@
         })();
 
         // =========================================================
-        // 6. Seamless Web3Forms AJAX Submission
+        // 6. Lead capture — posts straight to Weebji HQ (own Supabase
+        //    edge fn), which logs the lead + pushes Sahil. No 3rd party.
         // =========================================================
+        const HQ_ENDPOINT = 'https://nmhxrathmbyntpsihmqa.supabase.co/functions/v1/hq-capture-lead';
+        const HQ_KEY = 'sb_publishable_Sw2TyzTk8QYwXDrZRvu0fw_uGdZ6hwI';
         const form = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             submitBtn.innerText = 'Sending...';
             submitBtn.style.opacity = '0.7';
             submitBtn.style.pointerEvents = 'none';
-            
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
 
-            fetch('https://api.web3forms.com/submit', {
+            const payload = Object.fromEntries(new FormData(form));
+
+            fetch(HQ_ENDPOINT, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'apikey': HQ_KEY,
+                    'Authorization': 'Bearer ' + HQ_KEY
                 },
-                body: json
+                body: JSON.stringify(payload)
             })
-            .then(async (response) => {
-                let result = await response.json();
-                if (response.status == 200) {
+            .then((response) => {
+                if (response.ok) {
                     submitBtn.innerText = 'Message Sent! ✓';
                     submitBtn.style.background = 'var(--success)';
                     submitBtn.style.color = '#fff';
                     submitBtn.style.opacity = '1';
                     form.reset();
-                    
+
                     setTimeout(() => {
                         submitBtn.innerText = 'Send Message →';
                         submitBtn.style.background = 'var(--text-main)';
@@ -2015,19 +2011,32 @@
                         submitBtn.style.pointerEvents = 'auto';
                     }, 5000);
                 } else {
-                    console.log(response);
                     submitBtn.innerText = 'Error! Try again.';
                     submitBtn.style.opacity = '1';
                     submitBtn.style.pointerEvents = 'auto';
                 }
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
                 submitBtn.innerText = 'Error! Try again.';
                 submitBtn.style.opacity = '1';
                 submitBtn.style.pointerEvents = 'auto';
             });
         });
+
+        // Service CTAs funnel into the contact form with the right option preselected
+        (function () {
+            const svc = document.getElementById('service');
+            document.querySelectorAll('a[data-service]').forEach((a) => {
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (svc) svc.value = a.getAttribute('data-service');
+                    const target = document.getElementById('contact');
+                    if (typeof lenis !== 'undefined' && lenis.scrollTo) lenis.scrollTo(target, { offset: 0 });
+                    else target.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => { const n = document.getElementById('name'); if (n) n.focus(); }, 700);
+                });
+            });
+        })();
 
     </script>
 </body>
