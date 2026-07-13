@@ -1019,6 +1019,80 @@
         .badge-blue { background: rgba(41,151,255,0.12); border-color: rgba(41,151,255,0.35); color: var(--accent); }
         .badge-warm { background: rgba(255,159,10,0.12); border-color: rgba(255,159,10,0.35); color: #ff9f0a; }
 
+        /* ===== Region toggle + per-service pricing ===== */
+        .cur-toggle { display: inline-flex; gap: 3px; padding: 3px; background: rgba(0,0,0,0.35); border: 1px solid var(--glass-border); border-radius: 999px; }
+        .cur-toggle button { border: 0; background: transparent; color: var(--text-muted); cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 999px; transition: 0.2s; line-height: 1; display: inline-flex; align-items: center; gap: 5px; }
+        .cur-toggle button.active { background: var(--accent); color: #fff; }
+        @media (max-width: 640px) { .cur-toggle .lbl { display: none; } .cur-toggle button { padding: 6px 8px; } }
+        .svc-price { margin: 0 0 20px; font-size: 16px; color: var(--text-muted); font-weight: 500; }
+        .svc-price b { color: var(--text-main); font-weight: 700; font-size: 19px; }
+        .svc-price.is-soon { color: #ff9f0a; font-weight: 600; }
+
+        /* ===== #systems — live command-center mock ===== */
+        .cc-panel { width: 100%; align-self: stretch; min-height: 420px; background: #0c0c10; border: 1px solid var(--glass-border); border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); padding: 18px; display: flex; flex-direction: column; }
+        .cc-head { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--text-muted); font-weight: 600; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .cc-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 14px 0; }
+        .cc-kpi { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 11px 13px; }
+        .cc-kpi .n { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: var(--text-main); font-variant-numeric: tabular-nums; }
+        .cc-kpi .l { font-size: 9.5px; color: var(--text-muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+        .cc-feed { display: flex; flex-direction: column; gap: 10px; flex: 1; overflow: hidden; }
+        .cc-tile { display: flex; align-items: center; gap: 12px; padding: 13px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; animation: feedIn 0.5s cubic-bezier(0.16,1,0.3,1); }
+        @keyframes feedIn { from { opacity: 0; transform: translateY(-12px) scale(0.97); } to { opacity: 1; transform: none; } }
+        .cc-ico { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; background: rgba(41,151,255,0.12); }
+        .cc-txt .t { font-size: 13px; font-weight: 600; color: var(--text-main); }
+        .cc-txt .s { font-size: 11px; color: var(--text-muted); }
+        .cc-tag { margin-left: auto; font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; padding: 4px 9px; border-radius: 999px; white-space: nowrap; }
+        .cc-tag.g { background: rgba(52,199,89,0.15); color: var(--success); }
+        .cc-tag.b { background: rgba(41,151,255,0.15); color: var(--accent); }
+        .cc-tag.m { background: rgba(255,255,255,0.08); color: var(--text-muted); }
+        .cc-tag.w { background: rgba(255,159,10,0.15); color: #ff9f0a; }
+        .cc-kpis.four { grid-template-columns: repeat(4,1fr); }
+
+        /* ===== #ultimate — The Weebji System (flagship cinematic) ===== */
+        #ultimate { position: relative; background: radial-gradient(ellipse at 50% 22%, #0a0a12 0%, #000 72%); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .ult-stage { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 22px; overflow: hidden; }
+        .ult-inner { width: 100%; max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .ult-kicker { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: #cdd2e0; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 8px 18px; margin-bottom: 22px; background: rgba(255,255,255,0.03); }
+        .ult-h2 { font-size: clamp(30px, 5vw, 54px); font-weight: 800; line-height: 1.03; letter-spacing: -0.03em; margin-bottom: 10px; }
+        .ult-h2 span { display: block; background: linear-gradient(180deg, #ffffff, #9fa4b8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .ult-sub { max-width: 600px; color: var(--text-muted); font-size: clamp(13.5px, 1.5vw, 16px); line-height: 1.55; margin-bottom: 16px; }
+        .ult-canvas { position: relative; width: 100%; max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+        .ult-fusion { position: relative; width: 100%; height: 380px; }
+        .ult-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 1; }
+        .ult-lines path { fill: none; stroke: var(--accent); stroke-width: 1.5; filter: drop-shadow(0 0 4px rgba(41,151,255,0.6)); opacity: 0.9; }
+        .ult-chip { position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: 8px; padding: 10px 15px; background: rgba(20,20,26,0.92); border: 1px solid var(--glass-border); border-radius: 12px; font-size: 13px; font-weight: 600; color: var(--text-main); white-space: nowrap; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .ult-chip .ic { font-size: 16px; }
+        .c-web { left: 0; top: calc(50% - 20px); }
+        .c-app { right: 0; top: calc(50% - 20px); }
+        .c-content { left: 3%; top: 4%; }
+        .c-orders { right: 3%; bottom: 4%; }
+        .ult-screen { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: min(540px, 100%); z-index: 2; }
+        .ult-screen .cc-panel { min-height: 320px; box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 70px rgba(41,151,255,0.10); position: relative; overflow: hidden; }
+        .ult-screen .cc-tile { padding: 10px 13px; }
+        .ult-screen .cc-kpi { padding: 9px 11px; }
+        .ult-scan { position: absolute; left: 0; right: 0; top: 0; height: 60%; background: linear-gradient(180deg, transparent, rgba(41,151,255,0.20), transparent); pointer-events: none; z-index: 6; opacity: 0; }
+        .ult-dock { display: inline-flex; gap: 7px; }
+        .ult-dock span { width: 25px; height: 25px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); opacity: 0.35; transition: opacity 0.4s, box-shadow 0.4s, border-color 0.4s; }
+        .ult-dock span.lit { opacity: 1; box-shadow: 0 0 12px rgba(41,151,255,0.5); border-color: rgba(41,151,255,0.45); }
+        .ult-offer { width: 100%; max-width: 620px; margin: 34px auto 0; display: flex; flex-direction: column; align-items: center; }
+        .ult-anim .ult-offer { position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: 0; justify-content: center; padding: 20px; background: radial-gradient(ellipse 90% 78% at 50% 50%, rgba(6,6,10,0.95) 46%, rgba(6,6,10,0.35) 100%); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border-radius: 22px; }
+        .ult-strike { margin: 0 0 6px !important; font-size: 15px; }
+        .ult-strike s { opacity: 0.85; }
+        .ult-bigprice { margin: 0 0 22px !important; font-size: clamp(18px, 2.6vw, 24px); color: var(--text-main); font-weight: 600; }
+        .ult-bigprice b { font-size: clamp(26px, 4vw, 36px); font-weight: 800; }
+        .ult-excl { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+        .ult-excl div { font-size: 14px; color: #d3d3dd; position: relative; padding-left: 24px; text-align: left; max-width: 470px; }
+        .ult-excl div::before { content: "\25C6"; position: absolute; left: 0; top: 2px; color: var(--accent); font-size: 11px; }
+        .ult-cta { background: #fff !important; color: #000 !important; border: 0 !important; font-size: 17px; padding: 17px 40px; box-shadow: 0 18px 50px rgba(255,255,255,0.15); }
+        .ult-cta:hover { transform: translateY(-2px); box-shadow: 0 22px 60px rgba(255,255,255,0.22); }
+        @media (max-width: 900px) {
+            .ult-stage { min-height: auto; padding: 64px 20px; }
+            .ult-chip, .ult-lines { display: none; }
+            .ult-fusion { height: auto; }
+            .ult-screen { position: static; transform: none; width: 100%; }
+            .cc-kpis.four { grid-template-columns: repeat(2,1fr); }
+        }
+
         /* ===== #websites — browser window building itself ===== */
         .bw-window {
             width: 100%;
@@ -1272,7 +1346,12 @@
             <div class="nav-inner">
             <div class="nav-logo">Weebji Studios</div>
             <div style="display: flex; align-items: center; gap: 12px;">
-                <a href="#restaurants" class="btn-nav" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Restaurants</a>
+                <div class="cur-toggle" id="curToggle" role="group" aria-label="Choose your region">
+                    <button data-cur="om" class="active"><span class="flag">🇴🇲</span><span class="lbl">OMR</span></button>
+                    <button data-cur="in"><span class="flag">🇮🇳</span><span class="lbl">INR</span></button>
+                    <button data-cur="pl"><span class="flag">🇵🇱</span><span class="lbl">PLN</span></button>
+                </div>
+                <a href="#restaurants" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Restaurants</a>
                 <a href="#websites" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Websites</a>
                 <a href="#apps" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Apps</a>
                 <a href="#contact" class="btn-nav">Book a Build</a>
@@ -1397,6 +1476,7 @@
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Printed table QR stands included.</strong> We set up everything; you change menu items and prices anytime.</span></div>
         </div>
 
+        <div class="svc-price" data-om="From <b>45 OMR</b> setup &middot; +8/mo &middot; 3 tiers" data-in="From <b>&#8377;2,999</b> setup &middot; +499/mo &middot; 3 tiers" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
         <div class="resto-ctas">
             <a href="https://skryrsh.github.io/weebji-studio/" target="_blank" rel="noopener noreferrer" class="btn-primary">Try the Live Demo →</a>
             <a href="#contact" data-service="Restaurant QR Menu" class="btn-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.25); color: var(--text-main);">Get a QR Menu Quote →</a>
@@ -1461,6 +1541,7 @@
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>48-hour standard turnaround</strong> for launch-ready sites.</span></div>
         </div>
 
+        <div class="svc-price" data-om="From <b>150 OMR</b> setup &middot; +12/mo" data-in="From <b>&#8377;9,999</b> setup &middot; +999/mo" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
         <div class="resto-ctas">
             <a href="#contact" data-service="Web Development" class="btn-primary">Start Your Website →</a>
         </div>
@@ -1520,6 +1601,7 @@
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Proven in production</strong> — we run our own live product, not just client demos.</span></div>
         </div>
 
+        <div class="svc-price" data-om="From <b>300 OMR</b> setup &middot; +25/mo" data-in="From <b>&#8377;19,999</b> setup &middot; +1,499/mo" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
         <div class="resto-ctas">
             <a href="#contact" data-service="App Development" class="btn-primary">Build Your App →</a>
         </div>
@@ -1568,8 +1650,65 @@
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>One monthly plan</strong> — you run the business, we run the feed.</span></div>
         </div>
 
+        <div class="svc-price" data-om="From <b>80 OMR</b> / month" data-in="From <b>&#8377;5,999</b> / month" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
         <div class="resto-ctas">
             <a href="#contact" data-service="Social Media" class="btn-primary">Grow Your Brand →</a>
+        </div>
+    </section>
+
+    <!-- ===== THE WEEBJI SYSTEM — Ultimate Flagship (cinematic fusion) ===== -->
+    <section id="ultimate">
+        <div class="ult-outer">
+            <div class="ult-stage">
+                <div class="ult-inner">
+                    <div class="ult-kicker">005 · THE FLAGSHIP — ONE BUILD PER MONTH</div>
+                    <h2 class="ult-h2"><span>Everything above.</span><span>Fused into one.</span></h2>
+                    <p class="ult-sub">The Weebji System — your website, your app, your content engine, your ordering and a bespoke command center, built as one organism. We design it, we host it, we run it. You watch the numbers move.</p>
+
+                    <div class="ult-canvas">
+                        <div class="ult-fusion">
+                            <svg class="ult-lines" viewBox="0 0 620 440" preserveAspectRatio="none">
+                                <path class="ln ln-web"     d="M40,220 L310,220"></path>
+                                <path class="ln ln-app"     d="M580,220 L310,220"></path>
+                                <path class="ln ln-content" d="M70,45 L310,220"></path>
+                                <path class="ln ln-orders"  d="M550,395 L310,220"></path>
+                            </svg>
+                            <div class="ult-chip c-web"><span class="ic">🌐</span> Website</div>
+                            <div class="ult-chip c-app"><span class="ic">📱</span> App</div>
+                            <div class="ult-chip c-content"><span class="ic">🎬</span> Content</div>
+                            <div class="ult-chip c-orders"><span class="ic">🍽️</span> Orders</div>
+
+                            <div class="ult-screen">
+                                <div class="cc-panel">
+                                    <div class="cc-head">
+                                        <span><span class="live-dot"></span> WEEBJI SYSTEM · LIVE</span>
+                                        <span class="ult-dock" aria-hidden="true"><span data-mod="web">🌐</span><span data-mod="app">📱</span><span data-mod="content">🎬</span><span data-mod="orders">🍽️</span></span>
+                                    </div>
+                                    <div class="cc-kpis four">
+                                        <div class="cc-kpi"><div class="n" id="ult-rev">1,284.50</div><div class="l">Revenue today</div></div>
+                                        <div class="cc-kpi"><div class="n" id="ult-bk">23</div><div class="l">Bookings</div></div>
+                                        <div class="cc-kpi"><div class="n" id="ult-ld">9</div><div class="l">Leads</div></div>
+                                        <div class="cc-kpi"><div class="n">4.9★</div><div class="l">Rating</div></div>
+                                    </div>
+                                    <div class="cc-feed" id="ult-feed"></div>
+                                    <div class="ult-scan"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ult-offer">
+                            <div class="svc-price ult-strike" data-om="Bought separately: <s>2,700+ OMR in year one</s>" data-in="Bought separately: <s>&#8377;1.9 lakh+ in year one</s>" data-pl="🇵🇱 Poland — applications open October 2026"></div>
+                            <div class="svc-price ult-bigprice" data-om="The System — <b>999 OMR</b> setup &middot; +99/mo" data-in="The System — <b>&#8377;74,999</b> setup &middot; +4,999/mo" data-pl="🇵🇱 Poland — applications open October 2026"></div>
+                            <div class="ult-excl">
+                                <div>The command center is not sold separately. This is the only way in.</div>
+                                <div>Milestone build — you see it running before you pay the balance.</div>
+                                <div>One build per month. When the slot is gone, it's gone.</div>
+                            </div>
+                            <a href="#contact" data-service="The Weebji System" class="btn-primary ult-cta">Apply for a build →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1624,6 +1763,7 @@
                                 <option value="App Development">App Development</option>
                                 <option value="Video Content">Video & Content</option>
                                 <option value="Social Media">Social Media Management</option>
+                                <option value="The Weebji System">The Weebji System — Application</option>
                                 <option value="Other">Other / Custom Inquiry</option>
                             </select>
                         </div>
@@ -2022,6 +2162,126 @@
                 submitBtn.style.pointerEvents = 'auto';
             });
         });
+
+        // ===== THE WEEBJI SYSTEM — flagship cinematic (fusion + live feed) =====
+        (function () {
+            const ult = document.getElementById('ultimate');
+            if (!ult) return;
+            const feed = document.getElementById('ult-feed');
+            const revEl = document.getElementById('ult-rev');
+            const bkEl = document.getElementById('ult-bk');
+            const ldEl = document.getElementById('ult-ld');
+            const dock = ult.querySelectorAll('.ult-dock span');
+
+            // [icon, title, sub, tag, tagClass, revDelta, bkDelta, ldDelta] — every event names its source module
+            const EV = [
+                ['🌐', 'Website → New lead captured', 'Contact form · 2 min ago', 'LEAD', 'b', 0, 0, 1],
+                ['🍽️', 'Orders → Table 6 ordered', '2× Burger · 2× Fries', 'LIVE', 'g', 27.00, 0, 0],
+                ['💳', 'Payment received', 'Card · settled instantly', 'PAID', 'g', 18.50, 0, 0],
+                ['🎬', 'Content → Reel passed 12K views', 'Posted by studio this morning', 'VIRAL', 'w', 0, 0, 0],
+                ['📱', 'App → 14 installs today', 'Push re-engagement on', 'GROWTH', 'b', 0, 0, 0],
+                ['⭐', 'Review collected · 5 stars', 'Auto-requested after visit', 'GOOGLE', 'b', 0, 0, 0],
+                ['🔔', 'Reminders sent · 11 customers', 'No one slips through', 'AUTO', 'm', 0, 0, 0]
+            ];
+            let rev = 1284.50, bk = 23, ld = 9, i = 0, ignited = false, feedTimer = null;
+            const CAP = 4;
+            const money = (v) => v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            function addEvent() {
+                const e = EV[i % EV.length]; i++;
+                const el = document.createElement('div');
+                el.className = 'cc-tile';
+                el.innerHTML = '<div class="cc-ico">' + e[0] + '</div><div class="cc-txt"><div class="t">' + e[1] + '</div><div class="s">' + e[2] + '</div></div><span class="cc-tag ' + e[4] + '">' + e[3] + '</span>';
+                feed.prepend(el);
+                while (feed.children.length > CAP) feed.lastElementChild.remove();
+                if (e[5]) { rev += e[5]; revEl.textContent = money(rev); }
+                if (e[6]) { bk += e[6]; bkEl.textContent = bk; }
+                if (e[7]) { ld += e[7]; ldEl.textContent = ld; }
+            }
+            function startFeed() { if (feedTimer) return; addEvent(); addEvent(); addEvent(); feedTimer = setInterval(addEvent, 2800); }
+            function ignite(countUp) {
+                if (ignited) return; ignited = true;
+                dock.forEach(s => s.classList.add('lit'));
+                if (countUp && typeof gsap !== 'undefined') {
+                    const o = { v: 0 };
+                    gsap.to(o, { v: 1284.50, duration: 1.2, ease: 'power1.out', onUpdate: () => revEl.textContent = money(o.v), onComplete: () => { rev = 1284.50; startFeed(); } });
+                } else { startFeed(); }
+            }
+
+            const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const canAnimate = window.innerWidth >= 900 && !reduce && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+
+            if (canAnimate) {
+                ult.classList.add('ult-anim');
+                gsap.set('.ult-screen', { scale: 0.86, opacity: 0.35 });
+                gsap.set('.ult-offer', { opacity: 0, y: 30 });
+                gsap.set('.ult-dock span', { opacity: 0.35 });
+                gsap.set('.c-web', { x: -120, opacity: 0 });
+                gsap.set('.c-app', { x: 120, opacity: 0 });
+                gsap.set('.c-content', { x: -100, y: -100, opacity: 0 });
+                gsap.set('.c-orders', { x: 100, y: 100, opacity: 0 });
+                revEl.textContent = '0.00';
+                ult.querySelectorAll('.ult-lines path').forEach(p => {
+                    const len = p.getTotalLength();
+                    p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
+                });
+
+                const tl = gsap.timeline({
+                    scrollTrigger: { trigger: '#ultimate', start: 'top top', end: '+=2600', pin: '#ultimate .ult-stage', scrub: 0.8 }
+                });
+                tl.from('.ult-kicker', { y: 20, opacity: 0, duration: 1 })
+                  .from('.ult-h2 span', { y: 40, opacity: 0, stagger: 0.15, duration: 1.2 }, '<')
+                  .from('.ult-sub', { y: 20, opacity: 0, duration: 1 }, '<0.3')
+                  // convergence
+                  .to('.ult-sub', { opacity: 0, y: -10, duration: 1 }, 2)
+                  .to('.ult-screen', { scale: 1, opacity: 1, duration: 2 }, 2)
+                  .to('.c-web', { x: 0, opacity: 1, duration: 1 }, 2)
+                  .to('.c-app', { x: 0, opacity: 1, duration: 1 }, 2.2)
+                  .to('.c-content', { x: 0, y: 0, opacity: 1, duration: 1 }, 2.4)
+                  .to('.c-orders', { x: 0, y: 0, opacity: 1, duration: 1 }, 2.6)
+                  .to('.ult-lines path', { strokeDashoffset: 0, duration: 1.8, stagger: 0.2 }, 2.6)
+                  .to('.ult-dock span', { opacity: 1, duration: 0.4, stagger: 0.2 }, 3.4)
+                  // absorb into the screen
+                  .to('.c-web', { x: 175, scale: 0.4, opacity: 0, duration: 1.2 }, 4.2)
+                  .to('.c-app', { x: -175, scale: 0.4, opacity: 0, duration: 1.2 }, 4.35)
+                  .to('.c-content', { x: 150, y: 150, scale: 0.4, opacity: 0, duration: 1.2 }, 4.5)
+                  .to('.c-orders', { x: -150, y: -150, scale: 0.4, opacity: 0, duration: 1.2 }, 4.65)
+                  // ignition
+                  .fromTo('.ult-scan', { yPercent: -100, opacity: 0.9 }, { yPercent: 170, opacity: 0, duration: 1.2 }, 5.4)
+                  .call(() => ignite(true), null, 5.7)
+                  // offer
+                  .to('.ult-fusion', { y: -70, scale: 0.8, opacity: 0.16, duration: 1.4 }, 6.3)
+                  .to('.ult-offer', { opacity: 1, y: 0, duration: 1.2 }, 6.7)
+                  .to({}, { duration: 1.5 }); // hold — keep the offer fully readable through the end of the pin
+            } else {
+                if ('IntersectionObserver' in window) {
+                    const io = new IntersectionObserver((ents) => {
+                        ents.forEach(en => { if (en.isIntersecting) { ignite(false); io.disconnect(); } });
+                    }, { threshold: 0.2 });
+                    io.observe(ult);
+                } else { ignite(false); }
+            }
+        })();
+
+        // Region / currency switcher — flips every .svc-price on the site
+        (function () {
+            const KEY = 'weebji_cur';
+            const btns = document.querySelectorAll('#curToggle button');
+            const priceEls = document.querySelectorAll('.svc-price');
+            function apply(cur) {
+                btns.forEach(b => b.classList.toggle('active', b.dataset.cur === cur));
+                priceEls.forEach(el => {
+                    const v = el.getAttribute('data-' + cur);
+                    if (v) el.innerHTML = v;
+                    el.classList.toggle('is-soon', cur === 'pl');
+                });
+                try { localStorage.setItem(KEY, cur); } catch (e) {}
+            }
+            btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.cur)));
+            let saved = 'om';
+            try { saved = localStorage.getItem(KEY) || 'om'; } catch (e) {}
+            apply(saved);
+        })();
 
         // Service CTAs funnel into the contact form with the right option preselected
         (function () {
