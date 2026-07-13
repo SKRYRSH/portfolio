@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weebji Studios · Elite Creative Agency</title>
-    <meta name="description" content="Weebji Studios — QR menu ordering systems for restaurants & cafés in Oman, plus websites, apps and content. Live demo, 48-hour turnaround.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="description" content="Weebji Studios — QR menu ordering systems for restaurants & cafés, plus websites, apps and content. Live demo, 48-hour turnaround.">
     <meta property="og:title" content="Weebji Studios · Restaurant QR Systems, Websites & Apps">
-    <meta property="og:description" content="Customers order from their phones. You watch every order and every rial live — from anywhere. Try the live demo.">
+    <meta property="og:description" content="Customers order from their phones. You watch every order live — from anywhere. Try the live demo.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://skryrsh.github.io/portfolio/">
 
@@ -1058,7 +1060,7 @@
             white-space: nowrap;
         }
         .bw-canvas { flex: 1; position: relative; overflow: hidden; background: linear-gradient(180deg, #101018, #0a0a0e); }
-        .bw-page { position: absolute; inset: 0; padding: 14px; display: flex; flex-direction: column; gap: 10px; transition: opacity 0.5s; }
+        .bw-page { position: absolute; inset: 0; padding: 18px; display: flex; flex-direction: column; justify-content: center; gap: 14px; transition: opacity 0.5s; }
         .bw-nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 8px 12px; background: rgba(255,255,255,0.05); border-radius: 10px;
@@ -1076,7 +1078,7 @@
         .bw-sub { height: 6px; width: 62%; margin: 9px auto 0; border-radius: 4px; background: rgba(255,255,255,0.12); opacity: 0; transition: opacity 0.4s; }
         .bw-sub.on { opacity: 1; }
         .bw-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .bw-block { height: 66px; border-radius: 12px; opacity: 0; transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.55s; }
+        .bw-block { height: 82px; border-radius: 12px; opacity: 0; transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.55s; }
         .bw-block.l { transform: translateX(-26px); background: linear-gradient(135deg, rgba(41,151,255,0.55), rgba(41,151,255,0.08)); }
         .bw-block.r { transform: translateX(26px); background: linear-gradient(135deg, rgba(0,245,255,0.42), rgba(41,151,255,0.08)); }
         .bw-block.on { opacity: 1; transform: none; }
@@ -1323,7 +1325,7 @@
                     </div>
                     <div style="display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;">
                         <span style="color: var(--text-muted);">Operating Languages</span>
-                        <strong style="font-weight: 600;">English, Hindi</strong>
+                        <strong style="font-weight: 600;">English + more</strong>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
                         <span style="color: var(--text-muted);">Studio Hotline</span>
@@ -1337,9 +1339,9 @@
     <!-- Restaurant QR Ordering System (Flagship Offer) -->
     <section class="resto-section container" id="restaurants">
         <div class="resto-head-wrap">
-            <div class="resto-badge"><span class="live-dot"></span> For Restaurants &amp; Cafés · Oman</div>
+            <div class="resto-badge"><span class="live-dot"></span> For Restaurants &amp; Cafés</div>
             <h2 class="section-heading">Your menu on their phones.<br>Your money on yours.</h2>
-            <p class="section-sub" style="margin-bottom: 0;">A complete QR ordering system, live in production. Customers scan the table QR, order and track their food — you watch every order and every rial in real time, from anywhere. No app downloads. English &amp; Arabic.</p>
+            <p class="section-sub" style="margin-bottom: 0;">A complete QR ordering system, live in production. Customers scan the table QR, order and track their food — you watch every order in real time, from anywhere. No app downloads. Works in any language.</p>
         </div>
 
         <div class="resto-grid">
@@ -1347,29 +1349,29 @@
             <div class="phone-mock">
                 <div class="phone-screen">
                     <div class="pm-header">
-                        <span class="pm-lang">EN | عربي</span>
-                        <div class="pm-cafe">Al Dana Café</div>
+                        <span class="pm-lang">EN ▾</span>
+                        <div class="pm-cafe">The Corner Café</div>
                         <div class="pm-table">Table 4 · Scan &amp; Order</div>
                     </div>
                     <div class="pm-items">
                         <div class="pm-item">
-                            <div><span class="pm-item-name">Cappuccino</span><span class="pm-item-ar">كابتشينو</span></div>
-                            <div class="pm-item-right"><span class="pm-price">1.500</span><span class="pm-add">+</span></div>
+                            <div><span class="pm-item-name">Cappuccino</span></div>
+                            <div class="pm-item-right"><span class="pm-price">$4.50</span><span class="pm-add">+</span></div>
                         </div>
                         <div class="pm-item">
-                            <div><span class="pm-item-name">Karak Chai</span><span class="pm-item-ar">شاي كرك</span></div>
-                            <div class="pm-item-right"><span class="pm-price">0.600</span><span class="pm-add">+</span></div>
+                            <div><span class="pm-item-name">Iced Latte</span></div>
+                            <div class="pm-item-right"><span class="pm-price">$5.00</span><span class="pm-add">+</span></div>
                         </div>
                         <div class="pm-item">
-                            <div><span class="pm-item-name">Club Sandwich</span><span class="pm-item-ar">كلوب ساندويتش</span></div>
-                            <div class="pm-item-right"><span class="pm-price">2.200</span><span class="pm-add">+</span></div>
+                            <div><span class="pm-item-name">Club Sandwich</span></div>
+                            <div class="pm-item-right"><span class="pm-price">$8.50</span><span class="pm-add">+</span></div>
                         </div>
                         <div class="pm-item">
-                            <div><span class="pm-item-name">Kunafa</span><span class="pm-item-ar">كنافة</span></div>
-                            <div class="pm-item-right"><span class="pm-price">1.800</span><span class="pm-add">+</span></div>
+                            <div><span class="pm-item-name">Cheesecake</span></div>
+                            <div class="pm-item-right"><span class="pm-price">$6.00</span><span class="pm-add">+</span></div>
                         </div>
                     </div>
-                    <div class="pm-total"><span>Your Order · 3 items</span><span>4.300 OMR</span></div>
+                    <div class="pm-total"><span>Your Order · 3 items</span><span>$19.00</span></div>
                 </div>
             </div>
 
@@ -1378,8 +1380,8 @@
                 <div class="dm-top">
                     <div class="dm-title"><span class="live-dot"></span> Owner Dashboard</div>
                     <div class="dm-revenue">
-                        <div class="dm-rev-num" id="dm-rev">38.700</div>
-                        <div class="dm-rev-label">Today's Revenue · OMR</div>
+                        <div class="dm-rev-num" id="dm-rev">486.00</div>
+                        <div class="dm-rev-label">Today's Revenue · USD</div>
                     </div>
                 </div>
                 <div class="dm-orders" id="dm-orders"></div>
@@ -1387,7 +1389,7 @@
         </div>
 
         <div class="resto-features">
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>No app. No waiting for a waiter.</strong> Customers scan the table QR and order in English or العربية, with a live running total.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>No app. No waiting for a waiter.</strong> Customers scan the table QR and order in any language, with a live running total.</span></div>
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Orders pop in the moment they're placed.</strong> One tap moves them New → Preparing → Ready → Delivered.</span></div>
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>See your money from anywhere.</strong> Today's revenue and best-sellers, live on your phone — even from home.</span></div>
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>10 PM daily summary</strong> pushed straight to the owner's phone. Plus clean day &amp; month PDF reports for accounting.</span></div>
@@ -1415,7 +1417,7 @@
                 <div class="bw-window" id="bw-window">
                     <div class="bw-bar">
                         <span class="bw-dot r"></span><span class="bw-dot y"></span><span class="bw-dot g"></span>
-                        <span class="bw-url">🔒 yourbusiness.om</span>
+                        <span class="bw-url">🔒 yourbusiness.com</span>
                     </div>
                     <div class="bw-canvas">
                         <div class="bw-page" id="bw-page">
@@ -1446,7 +1448,7 @@
                 <div class="wc-content">
                     <div class="wc-category">Featured Build · Web Design &amp; Brand Identity</div>
                     <h3 class="wc-title">Aldurrat IT Solutions</h3>
-                    <p class="wc-desc">A full website concept for an IT &amp; AI company in Oman — custom identity, animated UI, and a fully wired lead capture flow.</p>
+                    <p class="wc-desc">A full website concept for an IT &amp; AI company — custom identity, animated UI, and a fully wired lead capture flow.</p>
                     <a href="aldurrat-showcase.html" target="_blank" rel="noopener noreferrer" class="btn-primary">View the Concept</a>
                 </div>
             </div>
@@ -1792,15 +1794,15 @@
             if (!ordersEl || !revEl) return;
 
             const SAMPLES = [
-                ['Table 4', '2× Cappuccino · 1× Kunafa', 4.800],
-                ['Table 1', '3× Karak Chai', 1.800],
-                ['Counter', '1× Club Sandwich · 1× Juice', 3.400],
-                ['Table 7', '2× Shawarma · 2× Karak', 3.600],
-                ['Table 2', '1× Kunafa · 2× Turkish Coffee', 4.200],
-                ['Table 5', '2× Avocado Toast · 2× Latte', 6.400]
+                ['Table 4', '2× Cappuccino · 1× Cheesecake', 15.00],
+                ['Table 1', '3× Iced Latte', 15.00],
+                ['Counter', '1× Club Sandwich · 1× Juice', 12.50],
+                ['Table 7', '2× Burger · 2× Fries', 27.00],
+                ['Table 2', '1× Pasta · 2× Espresso', 21.50],
+                ['Table 5', '2× Avocado Toast · 2× Latte', 23.00]
             ];
             const STATUSES = [['NEW', 'st-new'], ['PREPARING', 'st-prep'], ['READY', 'st-ready']];
-            let revenue = 86.400, i = 0;
+            let revenue = 486.00, i = 0;
 
             function addOrder() {
                 const s = SAMPLES[i % SAMPLES.length]; i++;
@@ -1811,7 +1813,7 @@
                 ordersEl.prepend(el);
                 while (ordersEl.children.length > 4) ordersEl.lastElementChild.remove();
                 revenue += s[2];
-                revEl.textContent = revenue.toFixed(3);
+                revEl.textContent = revenue.toFixed(2);
             }
 
             function tickStatuses() {
@@ -1845,7 +1847,7 @@
             const sub = page.querySelector('.bw-sub');
             const blocks = page.querySelectorAll('.bw-block');
             const form = page.querySelector('.bw-form');
-            const HEADLINE = 'Grand Opening — Muscat';
+            const HEADLINE = 'Grand Opening This Weekend';
             let timers = [];
             const after = (ms, fn) => timers.push(setTimeout(fn, ms));
 
