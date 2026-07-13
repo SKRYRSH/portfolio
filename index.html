@@ -1005,10 +1005,188 @@
 
         /* ===== Service Sections (Websites / Apps / Content) ===== */
         .svc-section { padding: 120px 0; position: relative; z-index: 10; }
-        .svc-feature { margin: 56px 0 40px; }
+        .svc-feature {
+            display: grid;
+            grid-template-columns: 1.12fr 0.88fr;
+            gap: 40px;
+            align-items: stretch;
+            margin: 56px 0 40px;
+        }
         .svc-feature .work-card { height: auto; min-height: 420px; }
+        .svc-mock { min-width: 0; display: flex; }
         .badge-blue { background: rgba(41,151,255,0.12); border-color: rgba(41,151,255,0.35); color: var(--accent); }
         .badge-warm { background: rgba(255,159,10,0.12); border-color: rgba(255,159,10,0.35); color: #ff9f0a; }
+
+        /* ===== #websites — browser window building itself ===== */
+        .bw-window {
+            width: 100%;
+            align-self: stretch;
+            background: #0c0c10;
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            min-height: 420px;
+        }
+        .bw-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 14px;
+            background: rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            flex-shrink: 0;
+        }
+        .bw-dot { width: 11px; height: 11px; border-radius: 50%; }
+        .bw-dot.r { background: #ff5f57; }
+        .bw-dot.y { background: #febc2e; }
+        .bw-dot.g { background: #28c840; }
+        .bw-url {
+            flex: 1;
+            margin-left: 8px;
+            background: rgba(0,0,0,0.45);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .bw-canvas { flex: 1; position: relative; overflow: hidden; background: linear-gradient(180deg, #101018, #0a0a0e); }
+        .bw-page { position: absolute; inset: 0; padding: 14px; display: flex; flex-direction: column; gap: 10px; transition: opacity 0.5s; }
+        .bw-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 8px 12px; background: rgba(255,255,255,0.05); border-radius: 10px;
+            transform: translateY(-160%); opacity: 0;
+            transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.55s;
+        }
+        .bw-nav.on { transform: none; opacity: 1; }
+        .bw-logo { font-size: 12px; font-weight: 800; color: var(--accent); letter-spacing: -0.3px; }
+        .bw-links { display: flex; gap: 8px; }
+        .bw-links i { display: block; width: 22px; height: 6px; border-radius: 4px; background: rgba(255,255,255,0.16); }
+        .bw-hero { text-align: center; padding: 12px 4px 4px; }
+        .bw-h1 { font-size: clamp(15px, 2.3vw, 20px); font-weight: 800; letter-spacing: -0.4px; min-height: 24px; color: var(--text-main); }
+        .bw-caret { color: var(--accent); animation: bwBlink 0.9s steps(1) infinite; }
+        @keyframes bwBlink { 50% { opacity: 0; } }
+        .bw-sub { height: 6px; width: 62%; margin: 9px auto 0; border-radius: 4px; background: rgba(255,255,255,0.12); opacity: 0; transition: opacity 0.4s; }
+        .bw-sub.on { opacity: 1; }
+        .bw-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .bw-block { height: 66px; border-radius: 12px; opacity: 0; transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.55s; }
+        .bw-block.l { transform: translateX(-26px); background: linear-gradient(135deg, rgba(41,151,255,0.55), rgba(41,151,255,0.08)); }
+        .bw-block.r { transform: translateX(26px); background: linear-gradient(135deg, rgba(0,245,255,0.42), rgba(41,151,255,0.08)); }
+        .bw-block.on { opacity: 1; transform: none; }
+        .bw-form {
+            margin-top: auto; display: flex; flex-direction: column; gap: 8px;
+            padding: 12px; background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
+            opacity: 0; transform: translateY(18px); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s;
+        }
+        .bw-form.on { opacity: 1; transform: none; }
+        .bw-input { height: 9px; border-radius: 5px; background: rgba(255,255,255,0.09); }
+        .bw-input.s { width: 55%; }
+        .bw-cta { height: 22px; width: 92px; border-radius: 7px; background: var(--accent); margin-top: 2px; }
+        .bw-toast {
+            position: absolute; right: 12px; bottom: 12px; left: 12px;
+            display: flex; align-items: center; gap: 10px;
+            padding: 11px 13px; border-radius: 12px;
+            background: rgba(16,32,24,0.96);
+            border: 1px solid rgba(52,199,89,0.5);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+            font-size: 12px; font-weight: 600; color: var(--text-main);
+            transform: translateY(140%); opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s;
+        }
+        .bw-toast.on { transform: none; opacity: 1; }
+        .bw-toast .tk { color: var(--success); font-size: 15px; }
+
+        /* ===== #apps — phone receiving pushes + live stats ===== */
+        .ap-screen { position: relative; background: #08080d; min-height: 480px; padding: 0; }
+        .ap-push {
+            position: absolute; top: 12px; left: 12px; right: 12px; z-index: 5;
+            display: flex; align-items: center; gap: 11px;
+            padding: 11px 13px; border-radius: 15px;
+            background: rgba(20,22,32,0.97);
+            border: 1px solid rgba(0,245,255,0.28);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.6);
+            transform: translateY(-140%); opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s;
+        }
+        .ap-push.on { transform: none; opacity: 1; }
+        .ap-push-ic {
+            width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; font-size: 16px;
+            background: linear-gradient(135deg, rgba(0,245,255,0.3), rgba(41,151,255,0.15));
+        }
+        .ap-push-t { font-size: 12px; font-weight: 700; color: var(--text-main); }
+        .ap-push-b { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+        .ap-body { padding: 20px 16px 16px; display: flex; flex-direction: column; gap: 14px; height: 100%; }
+        .ap-top { display: flex; justify-content: space-between; align-items: flex-start; }
+        .ap-app { font-size: 15px; font-weight: 800; letter-spacing: -0.3px; }
+        .ap-rank { font-size: 10px; color: #00f5ff; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px; }
+        .ap-streak {
+            font-size: 13px; font-weight: 800; color: #ff9f0a;
+            background: rgba(255,159,10,0.12); border: 1px solid rgba(255,159,10,0.3);
+            padding: 5px 11px; border-radius: 12px; font-variant-numeric: tabular-nums;
+        }
+        .ap-xpwrap { height: 9px; border-radius: 6px; background: rgba(255,255,255,0.07); overflow: hidden; }
+        .ap-xpbar { height: 100%; width: 20%; border-radius: 6px; background: linear-gradient(90deg, #2997ff, #00f5ff); transition: width 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .ap-xplabel { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); font-variant-numeric: tabular-nums; margin-top: -6px; }
+        .ap-quests { display: flex; flex-direction: column; gap: 8px; }
+        .ap-q { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); font-size: 12px; }
+        .ap-q .tick { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+        .ap-q.done .tick { background: rgba(52,199,89,0.18); color: var(--success); }
+        .ap-q.done .qt { color: var(--text-muted); text-decoration: line-through; }
+        .ap-q.pend .tick { border: 1.5px solid rgba(255,255,255,0.2); }
+        .ap-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; }
+        .ap-chip { text-align: center; padding: 12px 8px; border-radius: 14px; background: rgba(0,245,255,0.05); border: 1px solid rgba(0,245,255,0.15); }
+        .ap-chip-n { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: #00f5ff; font-variant-numeric: tabular-nums; }
+        .ap-chip-l { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
+
+        /* ===== #content — reel going viral ===== */
+        .rl-wrap { align-items: center; justify-content: center; }
+        .rl-phone {
+            width: 100%; max-width: 262px; align-self: center;
+            background: #0a0a0c; border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 30px; padding: 8px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+        }
+        .rl-video {
+            position: relative; aspect-ratio: 9 / 16; border-radius: 24px; overflow: hidden;
+            background: linear-gradient(150deg, #3a1c00 0%, #1a0d1f 55%, #05050a 100%);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .rl-play {
+            width: 58px; height: 58px; border-radius: 50%;
+            background: rgba(255,255,255,0.14); backdrop-filter: blur(4px);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; color: #fff; padding-left: 4px;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.2); animation: rlPulse 2.4s ease-in-out infinite;
+        }
+        @keyframes rlPulse { 50% { transform: scale(1.08); box-shadow: 0 0 0 10px rgba(255,255,255,0); } }
+        .rl-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 14px 16px; background: linear-gradient(transparent, rgba(0,0,0,0.75)); }
+        .rl-views { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: #fff; font-variant-numeric: tabular-nums; }
+        .rl-views span { color: #ff9f0a; }
+        .rl-cap { font-size: 11px; color: rgba(255,255,255,0.82); margin-top: 4px; line-height: 1.4; }
+        .rl-follow {
+            position: absolute; top: 12px; left: 12px;
+            font-size: 11px; font-weight: 800; color: #fff;
+            background: linear-gradient(135deg, #ff453a, #ff9f0a);
+            padding: 5px 11px; border-radius: 12px; opacity: 0; transform: scale(0.7);
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s;
+        }
+        .rl-follow.on { opacity: 1; transform: scale(1); }
+        .rl-hearts { position: absolute; right: 8px; bottom: 60px; width: 40px; height: 60%; pointer-events: none; }
+        .rl-heart { position: absolute; bottom: 0; right: 6px; font-size: 18px; opacity: 0; animation: rlFloat 2.6s ease-out forwards; }
+        @keyframes rlFloat {
+            0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+            15% { opacity: 1; }
+            100% { transform: translate(var(--dx), -170px) scale(1.15); opacity: 0; }
+        }
 
         /* Responsive Master Rules */
         @media (max-width: 768px) {
@@ -1071,7 +1249,15 @@
             .resto-features { grid-template-columns: 1fr; margin-bottom: 32px; }
             .svc-section { padding: 70px 0; }
             .nav-desktop-only { display: none; }
+            .svc-feature {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin: 44px 0 24px;
+            }
             .svc-feature .work-card { min-height: 340px; }
+            .bw-window { min-height: 380px; }
+            .ap-screen { min-height: 440px; }
+            .rl-phone { max-width: 240px; }
         }
     </style>
 </head>
@@ -1225,6 +1411,36 @@
         </div>
 
         <div class="svc-feature">
+            <div class="svc-mock">
+                <div class="bw-window" id="bw-window">
+                    <div class="bw-bar">
+                        <span class="bw-dot r"></span><span class="bw-dot y"></span><span class="bw-dot g"></span>
+                        <span class="bw-url">🔒 yourbusiness.om</span>
+                    </div>
+                    <div class="bw-canvas">
+                        <div class="bw-page" id="bw-page">
+                            <div class="bw-nav">
+                                <span class="bw-logo">yourbrand</span>
+                                <span class="bw-links"><i></i><i></i><i></i></span>
+                            </div>
+                            <div class="bw-hero">
+                                <div class="bw-h1"><span id="bw-type"></span><span class="bw-caret">|</span></div>
+                                <div class="bw-sub"></div>
+                            </div>
+                            <div class="bw-blocks">
+                                <div class="bw-block l"></div>
+                                <div class="bw-block r"></div>
+                            </div>
+                            <div class="bw-form">
+                                <div class="bw-input"></div>
+                                <div class="bw-input s"></div>
+                                <div class="bw-cta"></div>
+                            </div>
+                        </div>
+                        <div class="bw-toast" id="bw-toast"><span class="tk">📩</span> New lead → sent to your WhatsApp</div>
+                    </div>
+                </div>
+            </div>
             <div class="work-card">
                 <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(41, 151, 255, 0.4), transparent 60%);"></div>
                 <div class="wc-content">
@@ -1257,6 +1473,33 @@
         </div>
 
         <div class="svc-feature">
+            <div class="svc-mock">
+                <div class="phone-mock">
+                    <div class="phone-screen ap-screen">
+                        <div class="ap-push" id="ap-push">
+                            <span class="ap-push-ic" id="ap-push-ic">⚔️</span>
+                            <div><div class="ap-push-t" id="ap-push-t">Your streak is waiting</div><div class="ap-push-b" id="ap-push-b">2h left · don't break the chain</div></div>
+                        </div>
+                        <div class="ap-body">
+                            <div class="ap-top">
+                                <div><div class="ap-app">WEEBJI OS</div><div class="ap-rank">Hunter · Lv <span id="ap-lv">14</span></div></div>
+                                <div class="ap-streak">🔥 <span id="ap-streak">23</span></div>
+                            </div>
+                            <div class="ap-xpwrap"><div class="ap-xpbar" id="ap-xp"></div></div>
+                            <div class="ap-xplabel"><span>Daily XP</span><span id="ap-xpn">1,240 / 2,000</span></div>
+                            <div class="ap-quests">
+                                <div class="ap-q done"><span class="tick">✓</span><span class="qt">Morning workout logged</span></div>
+                                <div class="ap-q done"><span class="tick">✓</span><span class="qt">No-scroll block · 2h</span></div>
+                                <div class="ap-q pend"><span class="tick"></span><span class="qt">Evening reading · 20 min</span></div>
+                            </div>
+                            <div class="ap-stats">
+                                <div class="ap-chip"><div class="ap-chip-n" id="ap-users">1,208</div><div class="ap-chip-l">Active users</div></div>
+                                <div class="ap-chip"><div class="ap-chip-n" id="ap-ret">41%</div><div class="ap-chip-l">Day-30 retention</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="work-card">
                 <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(0, 245, 255, 0.4), transparent 60%);"></div>
                 <div class="wc-content">
@@ -1289,6 +1532,19 @@
         </div>
 
         <div class="svc-feature">
+            <div class="svc-mock rl-wrap">
+                <div class="rl-phone">
+                    <div class="rl-video">
+                        <div class="rl-follow" id="rl-follow">+1 follower</div>
+                        <div class="rl-play">▶</div>
+                        <div class="rl-hearts" id="rl-hearts"></div>
+                        <div class="rl-overlay">
+                            <div class="rl-views"><span id="rl-views">250</span> views</div>
+                            <div class="rl-cap">discipline &gt; motivation 🔥 #weebji #mindset</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="work-card">
                 <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(255, 69, 58, 0.3), transparent 60%);"></div>
                 <div class="wc-content">
@@ -1574,6 +1830,146 @@
             addOrder(); addOrder();
             setInterval(addOrder, 9000);
             setInterval(tickStatuses, 2600);
+        })();
+
+        // =========================================================
+        // 5c. Websites — "site assembles itself" browser mock
+        // =========================================================
+        (function () {
+            const page = document.getElementById('bw-page');
+            const type = document.getElementById('bw-type');
+            const toast = document.getElementById('bw-toast');
+            if (!page || !type) return;
+
+            const nav = page.querySelector('.bw-nav');
+            const sub = page.querySelector('.bw-sub');
+            const blocks = page.querySelectorAll('.bw-block');
+            const form = page.querySelector('.bw-form');
+            const HEADLINE = 'Grand Opening — Muscat';
+            let timers = [];
+            const after = (ms, fn) => timers.push(setTimeout(fn, ms));
+
+            function typeHeadline(cb) {
+                let i = 0;
+                (function step() {
+                    type.textContent = HEADLINE.slice(0, i);
+                    if (i++ <= HEADLINE.length) after(55, step); else cb && cb();
+                })();
+            }
+
+            function reset() {
+                nav.classList.remove('on');
+                sub.classList.remove('on');
+                blocks.forEach(b => b.classList.remove('on'));
+                form.classList.remove('on');
+                toast.classList.remove('on');
+                type.textContent = '';
+                page.style.opacity = '1';
+            }
+
+            function run() {
+                timers.forEach(clearTimeout); timers = [];
+                reset();
+                after(400, () => nav.classList.add('on'));
+                after(1000, () => typeHeadline(() => sub.classList.add('on')));
+                after(2900, () => blocks[0].classList.add('on'));
+                after(3200, () => blocks[1].classList.add('on'));
+                after(3800, () => form.classList.add('on'));
+                after(4700, () => toast.classList.add('on'));   // money shot
+                after(6900, () => { toast.classList.remove('on'); page.style.opacity = '0'; });
+                after(7600, run);
+            }
+            run();
+        })();
+
+        // =========================================================
+        // 5d. Apps — phone push notifications + live stats
+        // =========================================================
+        (function () {
+            const push = document.getElementById('ap-push');
+            const xp = document.getElementById('ap-xp');
+            if (!push || !xp) return;
+
+            const ic = document.getElementById('ap-push-ic');
+            const t = document.getElementById('ap-push-t');
+            const b = document.getElementById('ap-push-b');
+            const xpn = document.getElementById('ap-xpn');
+            const lvEl = document.getElementById('ap-lv');
+            const streakEl = document.getElementById('ap-streak');
+            const usersEl = document.getElementById('ap-users');
+            const retEl = document.getElementById('ap-ret');
+
+            const PUSHES = [
+                ['⚔️', 'Your streak is waiting', "2h left · don't break the chain"],
+                ['🔥', 'Daily quest complete', '+50 XP · streak extended to 24'],
+                ['💳', 'Payment received', 'WEEBJI Plus subscription · +5.00'],
+                ['👑', 'You outranked a rival', 'Climbed to #7 on the leaderboard'],
+                ['🌙', 'Evening reading unlocked', 'Finish it to seal today’s streak']
+            ];
+            let pi = 0, xpVal = 62, lv = 14, streak = 23, users = 1208, ret = 41;
+
+            function showPush() {
+                const p = PUSHES[pi % PUSHES.length]; pi++;
+                ic.textContent = p[0]; t.textContent = p[1]; b.textContent = p[2];
+                push.classList.add('on');
+                setTimeout(() => push.classList.remove('on'), 3000);
+            }
+            function tickXP() {
+                xpVal += 6 + Math.floor(Math.random() * 8);
+                if (xpVal >= 100) { xpVal -= 100; lv++; streak++; lvEl.textContent = lv; streakEl.textContent = streak; }
+                xp.style.width = xpVal + '%';
+                xpn.textContent = (Math.round(xpVal * 20)).toLocaleString() + ' / 2,000';
+            }
+            function tickStats() {
+                if (Math.random() > 0.4) { users += Math.floor(Math.random() * 3); usersEl.textContent = users.toLocaleString(); }
+                if (Math.random() > 0.75) { ret = Math.min(48, ret + 1); retEl.textContent = ret + '%'; }
+            }
+
+            xp.style.width = xpVal + '%';
+            setTimeout(showPush, 1800);
+            setInterval(showPush, 6000);
+            setInterval(tickXP, 2400);
+            setInterval(tickStats, 3200);
+        })();
+
+        // =========================================================
+        // 5e. Content — reel going viral
+        // =========================================================
+        (function () {
+            const viewsEl = document.getElementById('rl-views');
+            const hearts = document.getElementById('rl-hearts');
+            const follow = document.getElementById('rl-follow');
+            if (!viewsEl || !hearts) return;
+
+            const START = 250, PEAK = 112000, DUR = 9000;
+            let t0 = null;
+
+            function race(ts) {
+                if (!t0) t0 = ts;
+                const p = Math.min((ts - t0) / DUR, 1);
+                const eased = 1 - Math.pow(1 - p, 3);        // easeOutCubic
+                viewsEl.textContent = Math.round(START + (PEAK - START) * eased).toLocaleString();
+                if (p < 1) requestAnimationFrame(race);
+                else setTimeout(() => { t0 = null; requestAnimationFrame(race); }, 1600);
+            }
+            requestAnimationFrame(race);
+
+            function floatHeart() {
+                const h = document.createElement('span');
+                h.className = 'rl-heart';
+                h.textContent = Math.random() > 0.5 ? '❤️' : '🧡';
+                h.style.setProperty('--dx', (Math.random() * 26 - 18) + 'px');
+                hearts.appendChild(h);
+                setTimeout(() => h.remove(), 2700);
+            }
+            setInterval(floatHeart, 1400);
+
+            function pulseFollow() {
+                follow.classList.add('on');
+                setTimeout(() => follow.classList.remove('on'), 2200);
+            }
+            setTimeout(pulseFollow, 2600);
+            setInterval(pulseFollow, 7000);
         })();
 
         // =========================================================
