@@ -1094,7 +1094,7 @@
         @keyframes dlSweep { from { left: 8px; } to { left: calc(100% - 10px); } }
         .dl-tc { font-size: 12px; font-weight: 700; color: var(--text-muted); font-variant-numeric: tabular-nums; letter-spacing: 0.1em; }
         /* print / company profile fan */
-        .dl-fan { position: relative; width: 250px; height: 143px; margin-top: 10px; margin-bottom: 34px; }
+        .dl-fan { position: relative; display: block; width: 250px; height: 143px; margin-top: 10px; margin-bottom: 34px; cursor: pointer; }
         .dl-page img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 8px; }
         .dl-page { position: absolute; inset: 0; border-radius: 8px; background: linear-gradient(160deg, #f4f5f7, #d9dce3); box-shadow: 0 14px 34px rgba(0,0,0,0.5); transform-origin: bottom center; opacity: 0; }
         .p-print.active .dl-page { animation: dlFan 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
@@ -1523,14 +1523,14 @@
                             <div class="dl-tc" id="dl-tc">00:00:00:00</div>
                         </div>
                         <div class="dl-panel p-print">
-                            <div class="dl-fan">
+                            <a class="dl-fan" href="assets/company-profile-sample.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the full 22-page company profile sample">
                                 <div class="dl-page"></div>
                                 <div class="dl-page"></div>
                                 <div class="dl-page"><img src="assets/profile-spread2.jpg" alt="" loading="lazy"></div>
                                 <div class="dl-page"><img src="assets/profile-spread.jpg" alt="Interior design project spread from a company profile" loading="lazy"></div>
                                 <div class="dl-page"><img src="assets/profile-cover.jpg" alt="22-page company profile cover" loading="lazy"></div>
-                            </div>
-                            <div class="dl-cap">Real 22-page company profile — designed in-studio</div>
+                            </a>
+                            <div class="dl-cap">Real client work — tap to read all 22 pages</div>
                         </div>
                     </div>
                 </div>
@@ -1542,7 +1542,9 @@
                     <h3 class="wc-title">One identity, everywhere</h3>
                     <p class="wc-desc">The WEEBJI OS logo, its cinematic launch trailer and premium company profiles — all designed in-studio. The same system, built for your brand.</p>
                     <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                        <a href="https://youtu.be/dxKXBo9eEto" target="_blank" rel="noopener noreferrer" class="btn-primary">Watch the Trailer</a>
+                        <a href="https://youtu.be/dxKXBo9eEto" target="_blank" rel="noopener noreferrer" class="btn-primary">🎬 Watch the Trailer</a>
+                        <a href="assets/company-profile-sample.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background:transparent; border:1px solid rgba(255,255,255,0.25); color:var(--text-main);">📄 Read the 22-Page Profile</a>
+                        <a href="https://play.google.com/store/apps/details?id=io.github.skryrsh.twa" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background:transparent; border:1px solid rgba(255,255,255,0.25); color:var(--text-main);">◆ The Logo, Live on Google Play</a>
                     </div>
                 </div>
             </div>
