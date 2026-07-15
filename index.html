@@ -1072,6 +1072,9 @@
         .p-logo.active .dl-concepts svg:nth-child(1) { animation-delay: 2.2s; }
         .p-logo.active .dl-concepts svg:nth-child(2) { animation-delay: 2.35s; }
         .p-logo.active .dl-concepts svg:nth-child(3) { animation-delay: 2.5s; }
+        .p-logo.active .dl-concepts svg:nth-child(4) { animation-delay: 2.65s; }
+        .p-logo.active .dl-concepts svg:nth-child(5) { animation-delay: 2.8s; }
+        .p-logo.active .dl-concepts svg:nth-child(6) { animation-delay: 2.95s; }
         @keyframes dlPop { to { opacity: 0.85; transform: none; } }
         /* motion timeline */
         .dl-screen { width: min(78%, 340px); aspect-ratio: 16/9; border-radius: 12px; border: 1px solid rgba(255,255,255,0.09); background: linear-gradient(120deg, #0f1b2e 0%, #11263e 40%, #1a1030 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
@@ -1091,7 +1094,8 @@
         @keyframes dlSweep { from { left: 8px; } to { left: calc(100% - 10px); } }
         .dl-tc { font-size: 12px; font-weight: 700; color: var(--text-muted); font-variant-numeric: tabular-nums; letter-spacing: 0.1em; }
         /* print / company profile fan */
-        .dl-fan { position: relative; width: 160px; height: 200px; margin-top: 10px; margin-bottom: 26px; }
+        .dl-fan { position: relative; width: 250px; height: 143px; margin-top: 10px; margin-bottom: 34px; }
+        .dl-page img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 8px; }
         .dl-page { position: absolute; inset: 0; border-radius: 8px; background: linear-gradient(160deg, #f4f5f7, #d9dce3); box-shadow: 0 14px 34px rgba(0,0,0,0.5); transform-origin: bottom center; opacity: 0; }
         .p-print.active .dl-page { animation: dlFan 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
         .dl-page:nth-child(1) { animation-delay: 0.15s; --r: -14deg; }
@@ -1100,13 +1104,7 @@
         .dl-page:nth-child(4) { animation-delay: 0.54s; --r: 7deg; }
         .dl-page:nth-child(5) { animation-delay: 0.67s; --r: 14deg; }
         @keyframes dlFan { from { opacity: 0; transform: rotate(0) translateY(24px); } to { opacity: 1; transform: rotate(var(--r)) translateY(0); } }
-        .dl-page.face { display: flex; flex-direction: column; gap: 7px; padding: 16px 14px; }
-        .dl-page.face i { display: block; border-radius: 3px; background: #23252b; }
-        .dl-page.face i:nth-child(1) { height: 22px; width: 62%; background: #29d6ff; }
-        .dl-page.face i:nth-child(2) { height: 7px; width: 88%; opacity: 0.7; }
-        .dl-page.face i:nth-child(3) { height: 7px; width: 76%; opacity: 0.5; }
-        .dl-page.face i:nth-child(4) { height: 44px; width: 100%; opacity: 0.14; margin-top: 6px; }
-        .dl-page.face i:nth-child(5) { height: 7px; width: 54%; opacity: 0.5; margin-top: auto; }
+        .dl-page { overflow: hidden; }
 
         /* ===== #ultimate — The Weebji System (flagship cinematic) ===== */
         #ultimate { position: relative; background: radial-gradient(ellipse at 50% 22%, #0a0a12 0%, #000 72%); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -1395,7 +1393,7 @@
             .ap-screen { min-height: 440px; }
             .rl-phone { max-width: 240px; }
             .dl-stage { min-height: 360px; }
-            .dl-fan { width: 130px; height: 165px; }
+            .dl-fan { width: 200px; height: 114px; }
         }
     </style>
 </head>
@@ -1413,10 +1411,10 @@
                     <button data-cur="in"><span class="flag">🇮🇳</span><span class="lbl">INR</span></button>
                     <button data-cur="pl"><span class="flag">🇵🇱</span><span class="lbl">PLN</span></button>
                 </div>
-                <a href="#restaurants" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Restaurants</a>
-                <a href="#websites" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Websites</a>
-                <a href="#apps" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Apps</a>
                 <a href="#design" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Design</a>
+                <a href="#websites" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Websites</a>
+                <a href="#restaurants" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Restaurants</a>
+                <a href="#apps" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Apps</a>
                 <a href="#contact" class="btn-nav">Book a Build</a>
             </div>
         </div>
@@ -1475,6 +1473,154 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ===== DESIGN — Brand, Motion & Print ===== -->
+    <section class="svc-section container" id="design">
+        <div class="resto-head-wrap">
+            <div class="resto-badge badge-violet">Design · Brand & Motion</div>
+            <h2 class="section-heading">Design that moves.</h2>
+            <p class="section-sub" style="margin-bottom:0;">Logos, motion trailers and premium company profiles — crafted by the same studio that designs its own products.</p>
+        </div>
+
+        <div class="svc-feature">
+            <div class="svc-mock">
+                <div class="dl-stage">
+                    <div class="dl-head">
+                        <span><span class="live-dot"></span> WEEBJI DESIGN LAB</span>
+                        <span class="dl-tabs">
+                            <button class="dl-tab active" data-p="0">LOGO</button>
+                            <button class="dl-tab" data-p="1">MOTION</button>
+                            <button class="dl-tab" data-p="2">PRINT</button>
+                        </span>
+                    </div>
+                    <div class="dl-canvas">
+                        <div class="dl-panel p-logo active">
+                            <svg class="dl-logo" viewBox="0 0 120 120" aria-label="WEEBJI OS logo drawing itself">
+                                <path class="dl-hex" d="M60 12 L102 36 L102 84 L60 108 L18 84 L18 36 Z"></path>
+                                <path class="dl-arrow" d="M60 24 L84 56 L68 56 L68 94 L52 94 L52 56 L36 56 Z"></path>
+                            </svg>
+                            <div class="dl-concepts" aria-hidden="true">
+                                <svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="13" fill="none" stroke="#bf5af2" stroke-width="3"/><path d="M10 22 L17 10 L24 22" fill="none" stroke="#bf5af2" stroke-width="3" stroke-linejoin="round"/></svg>
+                                <svg viewBox="0 0 34 34"><rect x="5" y="5" width="24" height="24" rx="6" fill="none" stroke="#ff9f0a" stroke-width="3"/><path d="M11 17 H23 M17 11 V23" stroke="#ff9f0a" stroke-width="3" stroke-linecap="round"/></svg>
+                                <svg viewBox="0 0 34 34"><path d="M6 26 L17 6 L28 26 Z" fill="none" stroke="#34c759" stroke-width="3" stroke-linejoin="round"/><circle cx="17" cy="20" r="3" fill="#34c759"/></svg>
+                                <svg viewBox="0 0 34 34"><path d="M17 5 L29 17 L17 29 L5 17 Z" fill="none" stroke="#ff453a" stroke-width="3" stroke-linejoin="round"/><path d="M13 17 L16 20 L21 13" fill="none" stroke="#ff453a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg viewBox="0 0 34 34"><circle cx="13" cy="17" r="9" fill="none" stroke="#2997ff" stroke-width="3"/><circle cx="21" cy="17" r="9" fill="none" stroke="#2997ff" stroke-width="3" opacity="0.55"/></svg>
+                                <svg viewBox="0 0 34 34"><rect x="5" y="5" width="24" height="24" rx="12" fill="none" stroke="#f5d90a" stroke-width="3"/><path d="M10 19 Q13.5 13 17 17 T24 15" fill="none" stroke="#f5d90a" stroke-width="3" stroke-linecap="round"/></svg>
+                            </div>
+                            <div class="dl-cap">Identity built in-house — WEEBJI OS</div>
+                        </div>
+                        <div class="dl-panel p-motion">
+                            <a class="dl-screen" href="https://youtu.be/dxKXBo9eEto" target="_blank" rel="noopener noreferrer" aria-label="Watch the WEEBJI OS trailer on YouTube" style="background-image: linear-gradient(rgba(6,10,18,0.3), rgba(6,10,18,0.3)), url('https://i.ytimg.com/vi/dxKXBo9eEto/hqdefault.jpg'); background-size: cover; background-position: center; cursor: pointer;"><div class="dl-play">▶</div></a>
+                            <div class="dl-timeline">
+                                <div class="dl-clip"></div>
+                                <div class="dl-clip k"></div>
+                                <div class="dl-clip"></div>
+                                <div class="dl-clip k"></div>
+                                <div class="dl-playhead"></div>
+                            </div>
+                            <div class="dl-tc" id="dl-tc">00:00:00:00</div>
+                        </div>
+                        <div class="dl-panel p-print">
+                            <div class="dl-fan">
+                                <div class="dl-page"></div>
+                                <div class="dl-page"></div>
+                                <div class="dl-page"><img src="assets/profile-spread2.jpg" alt="" loading="lazy"></div>
+                                <div class="dl-page"><img src="assets/profile-spread.jpg" alt="Interior design project spread from a company profile" loading="lazy"></div>
+                                <div class="dl-page"><img src="assets/profile-cover.jpg" alt="22-page company profile cover" loading="lazy"></div>
+                            </div>
+                            <div class="dl-cap">Real 22-page company profile — designed in-studio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(191, 90, 242, 0.3), transparent 60%);"></div>
+                <div class="wc-content">
+                    <div class="wc-category"><div class="live-dot"></div> In-House Proof · WEEBJI OS</div>
+                    <h3 class="wc-title">One identity, everywhere</h3>
+                    <p class="wc-desc">The WEEBJI OS logo, its cinematic launch trailer and premium company profiles — all designed in-studio. The same system, built for your brand.</p>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                        <a href="https://youtu.be/dxKXBo9eEto" target="_blank" rel="noopener noreferrer" class="btn-primary">Watch the Trailer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="resto-features">
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Logo &amp; identity design</strong> — mark, colors, type and usage rules, delivered in every format you'll ever need.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Motion design</strong> — launch trailers, animated logos and promo cuts for reels, ads and your website.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Premium company profiles</strong> — designed PDF decks that make you look established before the first meeting.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Everything matches</strong> — one visual system across your site, app, print and social.</span></div>
+        </div>
+
+        <div class="svc-price" data-om="From <b>40 OMR</b> per piece &middot; full brand kit from 250" data-in="From <b>&#8377;2,999</b> per piece &middot; full kit from &#8377;18,999" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
+        <div class="resto-ctas">
+            <a href="#contact" data-service="Design & Brand" class="btn-primary">Design My Brand →</a>
+        </div>
+    </section>
+
+    <!-- ===== WEBSITES ===== -->
+    <section class="svc-section container" id="websites">
+        <div class="resto-head-wrap">
+            <div class="resto-badge badge-blue">Websites · Design &amp; Build</div>
+            <h2 class="section-heading">Websites that sell,<br>not just sit there.</h2>
+            <p class="section-sub" style="margin-bottom:0;">Landing pages, business sites and immersive brand experiences — designed, written and deployed by one studio, with lead capture wired straight to your WhatsApp.</p>
+        </div>
+
+        <div class="svc-feature">
+            <div class="svc-mock">
+                <div class="bw-window" id="bw-window">
+                    <div class="bw-bar">
+                        <span class="bw-dot r"></span><span class="bw-dot y"></span><span class="bw-dot g"></span>
+                        <span class="bw-url">🔒 yourbusiness.com</span>
+                    </div>
+                    <div class="bw-canvas">
+                        <div class="bw-page" id="bw-page">
+                            <div class="bw-nav">
+                                <span class="bw-logo">yourbrand</span>
+                                <span class="bw-links"><i></i><i></i><i></i></span>
+                            </div>
+                            <div class="bw-hero">
+                                <div class="bw-h1"><span id="bw-type"></span><span class="bw-caret">|</span></div>
+                                <div class="bw-sub"></div>
+                            </div>
+                            <div class="bw-blocks">
+                                <div class="bw-block l"></div>
+                                <div class="bw-block r"></div>
+                            </div>
+                            <div class="bw-form">
+                                <div class="bw-input"></div>
+                                <div class="bw-input s"></div>
+                                <div class="bw-cta"></div>
+                            </div>
+                        </div>
+                        <div class="bw-toast" id="bw-toast"><span class="tk">📩</span> New lead → sent to your WhatsApp</div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(41, 151, 255, 0.4), transparent 60%);"></div>
+                <div class="wc-content">
+                    <div class="wc-category">Featured Build · Web Design &amp; Brand Identity</div>
+                    <h3 class="wc-title">Aldurrat IT Solutions</h3>
+                    <p class="wc-desc">A full website concept for an IT &amp; AI company — custom identity, animated UI, and a fully wired lead capture flow.</p>
+                    <a href="aldurrat-showcase.html" target="_blank" rel="noopener noreferrer" class="btn-primary">View the Concept</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="resto-features">
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Custom design &amp; identity</strong> — no templates, built around your brand.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Every visitor can become a lead</strong> — enquiry forms land in your WhatsApp and email.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Hosting, domain &amp; updates handled</strong> — one supplier, zero technical headache.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>48-hour standard turnaround</strong> for launch-ready sites.</span></div>
+        </div>
+
+        <div class="svc-price" data-om="From <b>100 OMR</b> setup &middot; +15/mo" data-in="From <b>&#8377;7,499</b> setup &middot; +1,299/mo" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
+        <div class="resto-ctas">
+            <a href="#contact" data-service="Web Development" class="btn-primary">Start Your Website →</a>
         </div>
     </section>
 
@@ -1545,69 +1691,6 @@
             <a href="#contact" data-service="Restaurant QR Menu" class="btn-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.25); color: var(--text-main);">Get a QR Menu Quote →</a>
         </div>
         <p class="resto-proof">Packages tailored to your restaurant — three tiers, no long contracts. Message us for this month's offer.<br>Built by the studio behind <a href="https://play.google.com/store/apps/details?id=io.github.skryrsh.twa" target="_blank" rel="noopener noreferrer">WEEBJI OS</a> — a live product on the Google Play Store.</p>
-    </section>
-
-    <!-- ===== WEBSITES ===== -->
-    <section class="svc-section container" id="websites">
-        <div class="resto-head-wrap">
-            <div class="resto-badge badge-blue">Websites · Design &amp; Build</div>
-            <h2 class="section-heading">Websites that sell,<br>not just sit there.</h2>
-            <p class="section-sub" style="margin-bottom:0;">Landing pages, business sites and immersive brand experiences — designed, written and deployed by one studio, with lead capture wired straight to your WhatsApp.</p>
-        </div>
-
-        <div class="svc-feature">
-            <div class="svc-mock">
-                <div class="bw-window" id="bw-window">
-                    <div class="bw-bar">
-                        <span class="bw-dot r"></span><span class="bw-dot y"></span><span class="bw-dot g"></span>
-                        <span class="bw-url">🔒 yourbusiness.com</span>
-                    </div>
-                    <div class="bw-canvas">
-                        <div class="bw-page" id="bw-page">
-                            <div class="bw-nav">
-                                <span class="bw-logo">yourbrand</span>
-                                <span class="bw-links"><i></i><i></i><i></i></span>
-                            </div>
-                            <div class="bw-hero">
-                                <div class="bw-h1"><span id="bw-type"></span><span class="bw-caret">|</span></div>
-                                <div class="bw-sub"></div>
-                            </div>
-                            <div class="bw-blocks">
-                                <div class="bw-block l"></div>
-                                <div class="bw-block r"></div>
-                            </div>
-                            <div class="bw-form">
-                                <div class="bw-input"></div>
-                                <div class="bw-input s"></div>
-                                <div class="bw-cta"></div>
-                            </div>
-                        </div>
-                        <div class="bw-toast" id="bw-toast"><span class="tk">📩</span> New lead → sent to your WhatsApp</div>
-                    </div>
-                </div>
-            </div>
-            <div class="work-card">
-                <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(41, 151, 255, 0.4), transparent 60%);"></div>
-                <div class="wc-content">
-                    <div class="wc-category">Featured Build · Web Design &amp; Brand Identity</div>
-                    <h3 class="wc-title">Aldurrat IT Solutions</h3>
-                    <p class="wc-desc">A full website concept for an IT &amp; AI company — custom identity, animated UI, and a fully wired lead capture flow.</p>
-                    <a href="aldurrat-showcase.html" target="_blank" rel="noopener noreferrer" class="btn-primary">View the Concept</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="resto-features">
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Custom design &amp; identity</strong> — no templates, built around your brand.</span></div>
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Every visitor can become a lead</strong> — enquiry forms land in your WhatsApp and email.</span></div>
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Hosting, domain &amp; updates handled</strong> — one supplier, zero technical headache.</span></div>
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>48-hour standard turnaround</strong> for launch-ready sites.</span></div>
-        </div>
-
-        <div class="svc-price" data-om="From <b>100 OMR</b> setup &middot; +15/mo" data-in="From <b>&#8377;7,499</b> setup &middot; +1,299/mo" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
-        <div class="resto-ctas">
-            <a href="#contact" data-service="Web Development" class="btn-primary">Start Your Website →</a>
-        </div>
     </section>
 
     <!-- ===== APPS ===== -->
@@ -1716,88 +1799,6 @@
         <div class="svc-price" data-om="From <b>100 OMR</b> / month" data-in="From <b>&#8377;7,499</b> / month" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
         <div class="resto-ctas">
             <a href="#contact" data-service="Social Media" class="btn-primary">Grow Your Brand →</a>
-        </div>
-    </section>
-
-    <!-- ===== DESIGN — Brand, Motion & Print ===== -->
-    <section class="svc-section container" id="design">
-        <div class="resto-head-wrap">
-            <div class="resto-badge badge-violet">Design · Brand & Motion</div>
-            <h2 class="section-heading">Design that moves.</h2>
-            <p class="section-sub" style="margin-bottom:0;">Logos, motion trailers and premium company profiles — crafted by the same studio that designs its own products.</p>
-        </div>
-
-        <div class="svc-feature">
-            <div class="svc-mock">
-                <div class="dl-stage">
-                    <div class="dl-head">
-                        <span><span class="live-dot"></span> WEEBJI DESIGN LAB</span>
-                        <span class="dl-tabs">
-                            <button class="dl-tab active" data-p="0">LOGO</button>
-                            <button class="dl-tab" data-p="1">MOTION</button>
-                            <button class="dl-tab" data-p="2">PRINT</button>
-                        </span>
-                    </div>
-                    <div class="dl-canvas">
-                        <div class="dl-panel p-logo active">
-                            <svg class="dl-logo" viewBox="0 0 120 120" aria-label="WEEBJI OS logo drawing itself">
-                                <path class="dl-hex" d="M60 12 L102 36 L102 84 L60 108 L18 84 L18 36 Z"></path>
-                                <path class="dl-arrow" d="M60 24 L84 56 L68 56 L68 94 L52 94 L52 56 L36 56 Z"></path>
-                            </svg>
-                            <div class="dl-concepts" aria-hidden="true">
-                                <svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="13" fill="none" stroke="#bf5af2" stroke-width="3"/><path d="M10 22 L17 10 L24 22" fill="none" stroke="#bf5af2" stroke-width="3" stroke-linejoin="round"/></svg>
-                                <svg viewBox="0 0 34 34"><rect x="5" y="5" width="24" height="24" rx="6" fill="none" stroke="#ff9f0a" stroke-width="3"/><path d="M11 17 H23 M17 11 V23" stroke="#ff9f0a" stroke-width="3" stroke-linecap="round"/></svg>
-                                <svg viewBox="0 0 34 34"><path d="M6 26 L17 6 L28 26 Z" fill="none" stroke="#34c759" stroke-width="3" stroke-linejoin="round"/><circle cx="17" cy="20" r="3" fill="#34c759"/></svg>
-                            </div>
-                            <div class="dl-cap">Identity built in-house — WEEBJI OS</div>
-                        </div>
-                        <div class="dl-panel p-motion">
-                            <div class="dl-screen"><div class="dl-play">▶</div></div>
-                            <div class="dl-timeline">
-                                <div class="dl-clip"></div>
-                                <div class="dl-clip k"></div>
-                                <div class="dl-clip"></div>
-                                <div class="dl-clip k"></div>
-                                <div class="dl-playhead"></div>
-                            </div>
-                            <div class="dl-tc" id="dl-tc">00:00:00:00</div>
-                        </div>
-                        <div class="dl-panel p-print">
-                            <div class="dl-fan">
-                                <div class="dl-page"></div>
-                                <div class="dl-page"></div>
-                                <div class="dl-page"></div>
-                                <div class="dl-page"></div>
-                                <div class="dl-page face"><i></i><i></i><i></i><i></i><i></i></div>
-                            </div>
-                            <div class="dl-cap">22-page company profile — print-ready</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="work-card">
-                <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(191, 90, 242, 0.3), transparent 60%);"></div>
-                <div class="wc-content">
-                    <div class="wc-category"><div class="live-dot"></div> In-House Proof · WEEBJI OS</div>
-                    <h3 class="wc-title">One identity, everywhere</h3>
-                    <p class="wc-desc">The WEEBJI OS logo, its cinematic launch trailer and premium company profiles — all designed in-studio. The same system, built for your brand.</p>
-                    <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                        <a href="https://youtube.com/@weebji" target="_blank" rel="noopener noreferrer" class="btn-primary">Watch the Trailer</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="resto-features">
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Logo &amp; identity design</strong> — mark, colors, type and usage rules, delivered in every format you'll ever need.</span></div>
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Motion design</strong> — launch trailers, animated logos and promo cuts for reels, ads and your website.</span></div>
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Premium company profiles</strong> — designed PDF decks that make you look established before the first meeting.</span></div>
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Everything matches</strong> — one visual system across your site, app, print and social.</span></div>
-        </div>
-
-        <div class="svc-price" data-om="From <b>40 OMR</b> per piece &middot; full brand kit from 250" data-in="From <b>&#8377;2,999</b> per piece &middot; full kit from &#8377;18,999" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
-        <div class="resto-ctas">
-            <a href="#contact" data-service="Design & Brand" class="btn-primary">Design My Brand →</a>
         </div>
     </section>
 
