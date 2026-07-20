@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Menu Pricing · Weebji Studios</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="description" content="Restaurant QR ordering systems — three tiers, live demo, no long contracts.">
+    <meta property="og:title" content="QR Menu Pricing · Weebji Studios">
+    <meta property="og:description" content="Restaurant QR ordering systems — three tiers, live demo, no long contracts.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --bg: #000000;
+        --surface: rgba(28, 28, 30, 0.65);
+        --surface-hover: rgba(44, 44, 46, 0.8);
+        --text-main: #f5f5f7;
+        --text-muted: #86868b;
+        --accent: #2997ff;
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --success: #34c759;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 10; }
+
+    body::before {
+        content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+        background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(52,199,89,0.08) 0%, transparent 60%);
+    }
+
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-weight: 700; font-size: 17px; letter-spacing: -0.02em; color: var(--text-main); text-decoration: none; }
+    .nav-back { font-size: 14px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--text-main); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+
+    .cur-toggle { display: inline-flex; gap: 3px; padding: 3px; background: rgba(0,0,0,0.35); border: 1px solid var(--glass-border); border-radius: 999px; }
+    .cur-toggle button { border: 0; background: transparent; color: var(--text-muted); cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 999px; transition: 0.2s; line-height: 1; display: inline-flex; align-items: center; gap: 5px; }
+    .cur-toggle button.active { background: var(--accent); color: #fff; }
+    @media (max-width: 640px) { .cur-toggle .lbl { display: none; } .cur-toggle button { padding: 6px 8px; } }
+
+    .resto-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(52, 199, 89, 0.12); border: 1px solid rgba(52, 199, 89, 0.35); color: var(--success); padding: 8px 18px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+
+    .ph-hero { padding: 90px 0 60px; text-align: center; position: relative; z-index: 1; }
+    .section-heading { font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 20px; background: linear-gradient(180deg, #ffffff 0%, #86868b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
+    .section-sub { color: var(--text-muted); font-size: clamp(16px, 2vw, 19px); max-width: 620px; margin: 0 auto; line-height: 1.5; }
+
+    .proof-strip { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 28px; font-size: 14px; color: var(--text-muted); }
+    .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; box-shadow: 0 0 10px rgba(52, 199, 89, 0.5); flex-shrink: 0; }
+    .proof-strip a { color: var(--text-main); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+
+    .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 40px 0 100px; position: relative; z-index: 1; align-items: start; }
+    .tier-card { background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 40px 32px; display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.3s; }
+    .tier-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.22); }
+    .tier-card.popular { border-color: var(--accent); background: rgba(41,151,255,0.07); transform: translateY(-14px); }
+    .tier-card.popular:hover { transform: translateY(-20px); }
+    .tier-ribbon { display: inline-block; align-self: flex-start; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 16px; }
+    .tier-name { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+    .tier-tagline { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; min-height: 34px; line-height: 1.4; }
+    .tier-price { font-size: 15px; color: var(--text-muted); margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--glass-border); }
+    .tier-price b { display: block; font-size: 36px; color: var(--text-main); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2px; }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; flex-grow: 1; }
+    .tier-features li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #d2d2d7; line-height: 1.5; }
+    .tier-features li::before { content: '✓'; color: var(--success); font-weight: 700; flex-shrink: 0; }
+    .tier-cta { display: block; text-align: center; padding: 14px 24px; border-radius: 30px; font-size: 14px; font-weight: 600; text-decoration: none; transition: transform 0.2s, background 0.2s; background: rgba(255,255,255,0.06); color: var(--text-main); border: 1px solid var(--glass-border); }
+    .tier-cta:hover { transform: scale(1.03); background: rgba(255,255,255,0.1); }
+    .tier-card.popular .tier-cta { background: var(--text-main); color: var(--bg); border: none; }
+    .tier-card.popular .tier-cta:hover { background: #ffffff; }
+
+    .ph-footer { text-align: center; padding: 0 0 100px; position: relative; z-index: 1; }
+    .ph-footer p { color: var(--text-muted); font-size: 15px; margin-bottom: 20px; }
+    .btn-primary { display: inline-flex; align-items: center; background: var(--text-main); color: var(--bg); padding: 16px 32px; border-radius: 30px; font-size: 14px; font-weight: 600; text-decoration: none; transition: transform 0.2s, background 0.2s; }
+    .btn-primary:hover { transform: scale(1.05); background: #ffffff; }
+
+    footer.site-foot { border-top: 1px solid var(--glass-border); padding: 32px 0; text-align: center; color: var(--text-muted); font-size: 13px; position: relative; z-index: 1; }
+    footer.site-foot a { color: var(--text-muted); text-decoration: none; }
+    footer.site-foot a:hover { color: var(--text-main); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .ph-hero, .tier-card, .ph-footer { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+    .tier-card:nth-child(2) { animation-delay: 0.08s; }
+    .tier-card:nth-child(3) { animation-delay: 0.16s; }
+
+    @media (max-width: 900px) {
+        .tier-grid { grid-template-columns: 1fr; padding: 32px 0 70px; }
+        .tier-card.popular { transform: none; }
+        .tier-card.popular:hover { transform: translateY(-6px); }
+    }
+    @media (max-width: 768px) {
+        .container { padding: 0 20px; }
+        .nav-inner { padding: 16px 20px; }
+        .ph-hero { padding: 60px 0 40px; }
+    }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Weebji Studios</a>
+        <div class="nav-right">
+            <div class="cur-toggle" id="curToggle" role="group" aria-label="Choose your region">
+                <button data-cur="om" class="active"><span class="flag">🇴🇲</span><span class="lbl">OMR</span></button>
+                <button data-cur="in"><span class="flag">🇮🇳</span><span class="lbl">INR</span></button>
+                <button data-cur="pl"><span class="flag">🇵🇱</span><span class="lbl">PLN</span></button>
+            </div>
+            <a href="index.html#restaurants" class="nav-back">← All Services</a>
+        </div>
+    </div>
+</nav>
+
+<section class="ph-hero container">
+    <div class="resto-badge">Restaurants · QR Ordering</div>
+    <h1 class="section-heading">Your menu on their phones.<br>Your money on yours.</h1>
+    <p class="section-sub">Customers scan and order from their table. You watch every order live, from anywhere. Three tiers, no long contracts.</p>
+    <div class="proof-strip">
+        <div class="live-dot"></div>
+        <a href="https://skryrsh.github.io/weebji-studio/" target="_blank" rel="noopener noreferrer">Try the Live Demo →</a>
+        <span>Built by the studio behind</span>
+        <a href="https://play.google.com/store/apps/details?id=io.github.skryrsh.twa" target="_blank" rel="noopener noreferrer">WEEBJI OS</a>
+        <span>on the Play Store</span>
+    </div>
+</section>
+
+<section class="tier-grid container">
+    <div class="tier-card">
+        <div class="tier-name">Go</div>
+        <div class="tier-tagline">Get orders off paper — the essentials.</div>
+        <div class="tier-price svc-price" data-om="<b>45 OMR</b> setup <span style='font-size:14px'>+8/mo</span>" data-in="<b>&#8377;3,299</b> setup <span style='font-size:14px'>+&#8377;599/mo</span>" data-pl="🇵🇱 Poland — launching Oct 2026"><b>45 OMR</b> setup <span style="font-size:14px">+8/mo</span></div>
+        <ul class="tier-features">
+            <li>QR-code digital menu</li>
+            <li>Table ordering, no app download</li>
+            <li>Owner dashboard — see orders live</li>
+        </ul>
+        <a href="index.html?service=Restaurant+QR+Menu#contact" class="tier-cta">Get Started →</a>
+    </div>
+    <div class="tier-card popular">
+        <div class="tier-ribbon">Most Popular</div>
+        <div class="tier-name">Pro</div>
+        <div class="tier-tagline">The standard setup for a busy floor.</div>
+        <div class="tier-price svc-price" data-om="<b>90 OMR</b> setup <span style='font-size:14px'>+15/mo</span>" data-in="<b>&#8377;6,749</b> setup <span style='font-size:14px'>+&#8377;1,099/mo</span>" data-pl="🇵🇱 Poland — launching Oct 2026"><b>90 OMR</b> setup <span style="font-size:14px">+15/mo</span></div>
+        <ul class="tier-features">
+            <li>Everything in Go</li>
+            <li>Order status tracking (new → preparing → ready)</li>
+            <li>Daily/weekly PDF reports</li>
+            <li>Bilingual AR/EN menu</li>
+        </ul>
+        <a href="index.html?service=Restaurant+QR+Menu#contact" class="tier-cta">Get a QR Menu Quote →</a>
+    </div>
+    <div class="tier-card">
+        <div class="tier-name">Complete</div>
+        <div class="tier-tagline">The full command center for your floor.</div>
+        <div class="tier-price svc-price" data-om="<b>150 OMR</b> setup <span style='font-size:14px'>+20/mo</span>" data-in="<b>&#8377;11,249</b> setup <span style='font-size:14px'>+&#8377;1,499/mo</span>" data-pl="🇵🇱 Poland — launching Oct 2026"><b>150 OMR</b> setup <span style="font-size:14px">+20/mo</span></div>
+        <ul class="tier-features">
+            <li>Everything in Pro</li>
+            <li>Multi-table + multi-staff dashboard</li>
+            <li>10pm daily owner push summary</li>
+            <li>Priority support</li>
+        </ul>
+        <a href="index.html?service=Restaurant+QR+Menu#contact" class="tier-cta">Go Complete →</a>
+    </div>
+</section>
+
+<section class="ph-footer container">
+    <p>Not sure which tier fits? Tell us about your restaurant and we'll recommend one.</p>
+    <a href="index.html?service=Restaurant+QR+Menu#contact" class="btn-primary">Talk to the Studio →</a>
+</section>
+
+<footer class="site-foot">
+    <a href="index.html">Weebji Studios</a> · <a href="index.html#restaurants">All Services</a>
+</footer>
+
+<script>
+(function () {
+    const KEY = 'weebji_cur';
+    const btns = document.querySelectorAll('#curToggle button');
+    const priceEls = document.querySelectorAll('.svc-price');
+    function apply(cur) {
+        btns.forEach(b => b.classList.toggle('active', b.dataset.cur === cur));
+        priceEls.forEach(el => {
+            const v = el.getAttribute('data-' + cur);
+            if (v) el.innerHTML = v;
+            el.classList.toggle('is-soon', cur === 'pl');
+        });
+        try { localStorage.setItem(KEY, cur); } catch (e) {}
+    }
+    btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.cur)));
+    let saved = 'om';
+    try { saved = localStorage.getItem(KEY) || 'om'; } catch (e) {}
+    apply(saved);
+})();
+</script>
+
+</body>
+</html>

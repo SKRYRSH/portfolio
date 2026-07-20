@@ -1027,6 +1027,8 @@
         .svc-price { margin: 0 0 20px; font-size: 16px; color: var(--text-muted); font-weight: 500; }
         .svc-price b { color: var(--text-main); font-weight: 700; font-size: 19px; }
         .svc-price.is-soon { color: #ff9f0a; font-weight: 600; }
+        .svc-price a { color: var(--accent); font-weight: 600; text-decoration: none; }
+        .svc-price a:hover { text-decoration: underline; }
 
         /* ===== #systems — live command-center mock ===== */
         .cc-panel { width: 100%; align-self: stretch; min-height: 420px; background: #0c0c10; border: 1px solid var(--glass-border); border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); padding: 18px; display: flex; flex-direction: column; }
@@ -1411,6 +1413,7 @@
                     <button data-cur="in"><span class="flag">🇮🇳</span><span class="lbl">INR</span></button>
                     <button data-cur="pl"><span class="flag">🇵🇱</span><span class="lbl">PLN</span></button>
                 </div>
+                <a href="#content" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Social</a>
                 <a href="#design" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Design</a>
                 <a href="#websites" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Websites</a>
                 <a href="#restaurants" class="btn-nav nav-desktop-only" style="background: transparent; color: var(--text-main); border: 1px solid var(--glass-border);">Restaurants</a>
@@ -1473,6 +1476,61 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTENT & GROWTH ===== -->
+    <section class="svc-section container" id="content">
+        <div class="resto-head-wrap">
+            <div class="resto-badge badge-warm">Content · Social Growth</div>
+            <h2 class="section-heading">A content engine<br>for your brand.</h2>
+            <p class="section-sub" style="margin-bottom:0;">Instagram management, short-form video, thumbnails and YouTube systems — tested on our own channels before we ever touch yours.</p>
+        </div>
+
+        <div class="svc-feature">
+            <div class="svc-mock rl-wrap">
+                <div class="rl-phone">
+                    <div class="rl-video">
+                        <div class="rl-follow" id="rl-follow">+1 follower</div>
+                        <div class="rl-play">▶</div>
+                        <div class="rl-hearts" id="rl-hearts"></div>
+                        <div class="rl-overlay">
+                            <div class="rl-views"><span id="rl-views">250</span> views</div>
+                            <div class="rl-cap">discipline &gt; motivation 🔥 #weebji #mindset</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(255, 69, 58, 0.3), transparent 60%);"></div>
+                <div class="wc-content">
+                    <div class="wc-category"><div class="live-dot"></div> In-House Proof · YouTube</div>
+                    <h3 class="wc-title">Weebji Channel</h3>
+                    <p class="wc-desc">110K+ verified views built from zero — strategy, scripting, editing and thumbnails all handled in-studio.</p>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                        <a href="https://youtube.com/@weebji" target="_blank" rel="noopener noreferrer" class="btn-primary">Watch Videos</a>
+                        <a href="https://instagram.com/eternal.eminence" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background:transparent; border:1px solid rgba(255,255,255,0.25); color:var(--text-main);">Instagram</a>
+                    </div>
+                    <div style="margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                        <div class="live-dot"></div>
+                        <span style="font-size:0.85rem; color:var(--text-muted);">Client · Full Instagram retainer —</span>
+                        <a href="https://instagram.com/barbaros.oman" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem; font-weight:600; color:var(--text-main); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.3);">@barbaros.oman</a>
+                        <span style="font-size:0.85rem; color:var(--text-muted);">Turkish Grill &amp; Seafood</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="resto-features">
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Instagram managed end-to-end</strong> — posts, reels and captions in your branding, on schedule.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>High-retention edits &amp; CTR thumbnails</strong> for reels and YouTube.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Before/after project showcases</strong> that turn your portfolio into content.</span></div>
+            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>One monthly plan</strong> — you run the business, we run the feed.</span></div>
+        </div>
+
+        <div class="svc-price" data-om="Starting at <b>50 OMR</b>/month — <a href=&quot;social-pricing.html&quot;>See full pricing &#8594;</a>" data-in="Starting at <b>&#8377;3,749</b>/month — <a href=&quot;social-pricing.html&quot;>See full pricing &#8594;</a>" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
+        <div class="resto-ctas">
+            <a href="#contact" data-service="Social Media" class="btn-primary">Grow Your Brand →</a>
         </div>
     </section>
 
@@ -1557,7 +1615,7 @@
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Everything matches</strong> — one visual system across your site, app, print and social.</span></div>
         </div>
 
-        <div class="svc-price" data-om="From <b>40 OMR</b> per piece &middot; full brand kit from 250" data-in="From <b>&#8377;2,999</b> per piece &middot; full kit from &#8377;18,999" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
+        <div class="svc-price" data-om="Starting at <b>40 OMR</b>/piece — <a href=&quot;design-pricing.html&quot;>See full pricing &#8594;</a>" data-in="Starting at <b>&#8377;2,999</b>/piece — <a href=&quot;design-pricing.html&quot;>See full pricing &#8594;</a>" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
         <div class="resto-ctas">
             <a href="#contact" data-service="Design & Brand" class="btn-primary">Design My Brand →</a>
         </div>
@@ -1620,7 +1678,7 @@
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>48-hour standard turnaround</strong> for launch-ready sites.</span></div>
         </div>
 
-        <div class="svc-price" data-om="From <b>100 OMR</b> setup &middot; +15/mo" data-in="From <b>&#8377;7,499</b> setup &middot; +1,299/mo" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
+        <div class="svc-price" data-om="Starting at <b>100 OMR</b> — <a href=&quot;websites-pricing.html&quot;>See full pricing &#8594;</a>" data-in="Starting at <b>&#8377;7,499</b> — <a href=&quot;websites-pricing.html&quot;>See full pricing &#8594;</a>" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
         <div class="resto-ctas">
             <a href="#contact" data-service="Web Development" class="btn-primary">Start Your Website →</a>
         </div>
@@ -1687,7 +1745,7 @@
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Printed table QR stands included.</strong> We set up everything; you change menu items and prices anytime.</span></div>
         </div>
 
-        <div class="svc-price" data-om="From <b>45 OMR</b> setup &middot; +8/mo &middot; 3 tiers" data-in="From <b>&#8377;2,999</b> setup &middot; +499/mo &middot; 3 tiers" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
+        <div class="svc-price" data-om="Starting at <b>45 OMR</b> &middot; 3 tiers — <a href=&quot;restaurants-pricing.html&quot;>See full pricing &#8594;</a>" data-in="Starting at <b>&#8377;3,299</b> &middot; 3 tiers — <a href=&quot;restaurants-pricing.html&quot;>See full pricing &#8594;</a>" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
         <div class="resto-ctas">
             <a href="https://skryrsh.github.io/weebji-studio/" target="_blank" rel="noopener noreferrer" class="btn-primary">Try the Live Demo →</a>
             <a href="#contact" data-service="Restaurant QR Menu" class="btn-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.25); color: var(--text-main);">Get a QR Menu Quote →</a>
@@ -1749,64 +1807,9 @@
             <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Proven in production</strong> — we run our own live product, not just client demos.</span></div>
         </div>
 
-        <div class="svc-price" data-om="From <b>350 OMR</b> setup &middot; +30/mo" data-in="From <b>&#8377;24,999</b> setup &middot; +2,199/mo" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
+        <div class="svc-price" data-om="Starting at <b>350 OMR</b> — <a href=&quot;apps-pricing.html&quot;>See full pricing &#8594;</a>" data-in="Starting at <b>&#8377;24,999</b> — <a href=&quot;apps-pricing.html&quot;>See full pricing &#8594;</a>" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
         <div class="resto-ctas">
             <a href="#contact" data-service="App Development" class="btn-primary">Build Your App →</a>
-        </div>
-    </section>
-
-    <!-- ===== CONTENT & GROWTH ===== -->
-    <section class="svc-section container" id="content">
-        <div class="resto-head-wrap">
-            <div class="resto-badge badge-warm">Content · Social Growth</div>
-            <h2 class="section-heading">A content engine<br>for your brand.</h2>
-            <p class="section-sub" style="margin-bottom:0;">Instagram management, short-form video, thumbnails and YouTube systems — tested on our own channels before we ever touch yours.</p>
-        </div>
-
-        <div class="svc-feature">
-            <div class="svc-mock rl-wrap">
-                <div class="rl-phone">
-                    <div class="rl-video">
-                        <div class="rl-follow" id="rl-follow">+1 follower</div>
-                        <div class="rl-play">▶</div>
-                        <div class="rl-hearts" id="rl-hearts"></div>
-                        <div class="rl-overlay">
-                            <div class="rl-views"><span id="rl-views">250</span> views</div>
-                            <div class="rl-cap">discipline &gt; motivation 🔥 #weebji #mindset</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="work-card">
-                <div class="wc-bg" style="background-image: radial-gradient(circle at top right, rgba(255, 69, 58, 0.3), transparent 60%);"></div>
-                <div class="wc-content">
-                    <div class="wc-category"><div class="live-dot"></div> In-House Proof · YouTube</div>
-                    <h3 class="wc-title">Weebji Channel</h3>
-                    <p class="wc-desc">110K+ verified views built from zero — strategy, scripting, editing and thumbnails all handled in-studio.</p>
-                    <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                        <a href="https://youtube.com/@weebji" target="_blank" rel="noopener noreferrer" class="btn-primary">Watch Videos</a>
-                        <a href="https://instagram.com/eternal.eminence" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background:transparent; border:1px solid rgba(255,255,255,0.25); color:var(--text-main);">Instagram</a>
-                    </div>
-                    <div style="margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                        <div class="live-dot"></div>
-                        <span style="font-size:0.85rem; color:var(--text-muted);">Client · Full Instagram retainer —</span>
-                        <a href="https://instagram.com/barbaros.oman" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem; font-weight:600; color:var(--text-main); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.3);">@barbaros.oman</a>
-                        <span style="font-size:0.85rem; color:var(--text-muted);">Turkish Grill &amp; Seafood</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="resto-features">
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Instagram managed end-to-end</strong> — posts, reels and captions in your branding, on schedule.</span></div>
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>High-retention edits &amp; CTR thumbnails</strong> for reels and YouTube.</span></div>
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>Before/after project showcases</strong> that turn your portfolio into content.</span></div>
-            <div class="rf-item"><span class="rf-icon">✓</span><span class="rf-text"><strong>One monthly plan</strong> — you run the business, we run the feed.</span></div>
-        </div>
-
-        <div class="svc-price" data-om="From <b>100 OMR</b> / month" data-in="From <b>&#8377;7,499</b> / month" data-pl="🇵🇱 Poland — launching Oct 2026"></div>
-        <div class="resto-ctas">
-            <a href="#contact" data-service="Social Media" class="btn-primary">Grow Your Brand →</a>
         </div>
     </section>
 
@@ -2529,6 +2532,16 @@
                     setTimeout(() => { const n = document.getElementById('name'); if (n) n.focus(); }, 700);
                 });
             });
+        })();
+
+        // Deep links from the dedicated pricing pages (index.html?service=X#contact)
+        // preselect the same dropdown option, same as clicking a CTA on this page.
+        (function () {
+            const svc = document.getElementById('service');
+            if (!svc) return;
+            const params = new URLSearchParams(location.search);
+            const wanted = params.get('service');
+            if (wanted) svc.value = wanted;
         })();
 
     </script>
